@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prendre sa place | Quand le doute devient un levier plutôt qu’un frein.</title>
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --accent-green: #9ded3a;
+            --accent-blue: #3b82f6;
+            --text-gray: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-gray);
+            scroll-behavior: smooth;
+        }
+
+        .glow-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .card-blur {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card-blur:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        /* Dégradé spécifique pour le mot "sa" */
+        .sa-gradient {
+            background: linear-gradient(to bottom right, #9ded3a, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text; /* Ajoute cette ligne pour la compatibilité */
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(157, 237, 58, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* --- LOGO DYNAMIQUE --- */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-circle-outer {
+            width: 28px;
+            height: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .logo-center-wrapper {
+            position: relative;
+            width: 38px;
+            height: 38px;
+            margin: 0 -10px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-spinning-core {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-green), transparent 60%);
+            animation: spin-logo 2s linear infinite;
+            filter: blur(1px);
+        }
+
+        .logo-spinning-core::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            z-index: 3;
+        }
+
+        /* Version pour fond vert : le cœur devient blanc */
+        .on-green-bg .logo-spinning-core {
+            background: conic-gradient(from 0deg, transparent, white, transparent 60%);
+        }
+        .on-green-bg .logo-spinning-core::after {
+            background: var(--accent-green);
+        }
+        .on-green-bg .logo-dot {
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        @keyframes spin-logo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .edition-badge {
+            background: rgba(157, 237, 58, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    /* Force l'état caché au départ pour toutes les sections */
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* La classe qui sera ajoutée par le script pour révéler */
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+    </style>
+    
+    <meta name="description" content="Prendre sa place : un événement unique en Belgique dédié aux récits de vie authentiques. Découvrez des partages d'expérience pour transformer le doute en levier.">
+    <link rel="canonical" href="https://prendresaplace.be/">
+    <meta property="og:title" content="Prendre sa place | Des paroles vraies">
+    <meta property="og:description" content="Espace de résonance autour de récits de bascule et de quête de légitimité.">
+    <meta property="og:image" content="paola.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.prendresaplace.be"> <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Prendre sa place",
+      "startDate": "2026-28-01T18:00",
+      "location": {
+        "@type": "Place",
+        "name": "Lieu dévoilé prochainement",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bruxelles",
+          "addressCountry": "BE"
+        }
+      },
+      "organizer": {
+        "@type": "Person",
+        "name": "Paola Luyo"
+      }
+    }
+    </script>
+</head>
+        <body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="logo-container">
+                    <div class="logo-circle-outer"></div>
+                    <div class="logo-center-wrapper">
+                        <div class="logo-spinning-core"></div>
+                        <div class="logo-dot"></div>
+                    </div>
+                    <div class="logo-circle-outer"></div>
+                </div>
+                <div class="text-sm font-extrabold tracking-widest hidden sm:block">
+                    PRENDRE <span class="sa-gradient">SA</span> PLACE
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+            <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <div id="nav-menu" class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest items-center">
+                <a href="#intention" class="hover:text-[#9ded3a] transition-colors">Concept</a>
+                <a href="#contenu" class="hover:text-[#9ded3a] transition-colors">Contenu</a>
+                <a href="#lieu" class="hover:text-[#9ded3a] transition-colors">Édition #1</a>
+                <a href="#candidature" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">Intervenir</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <div class="glow-circle w-[500px] h-[500px] bg-[#9ded3a] -top-20 -left-20"></div>
+        <div class="glow-circle w-[400px] h-[400px] bg-blue-600 bottom-0 right-0"></div>
+
+        <div class="max-w-5xl mx-auto text-center z-10">
+            <div class="flex justify-center mb-6 opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]">
+                <span class="edition-badge">PREMIÈRE ÉDITION</span>
+            </div>
+            <h1 class="text-7xl md:text-[08rem] font-extrabold mb-8 tracking-tighter leading-none opacity-0 translate-y-4 animate-[fadeIn_1s_ease-out_0.2s_forwards]">
+                Prendre <br><span class="sa-gradient">sa</span> <br>place.
+            </h1>
+            <h2 class="text-white/60 text-lg md:text-2xl font-medium tracking-[0.2em] uppercase mb-10 opacity-0 animate-[fadeIn_1s_ease-out_0.4s_forwards]">
+                Des paroles vraies
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center opacity-0 animate-[fadeIn_1s_ease-out_0.6s_forwards]">
+                <a href="#contenu" class="btn-primary px-8 py-4 rounded-full font-bold w-full md:w-auto shadow-lg shadow-[#9ded3a]/20">Voir le programme</a>
+                <a href="#lieu" class="border border-white/20 hover:bg-white/10 px-8 py-4 rounded-full font-bold w-full md:w-auto transition-all">Lieu de l'évènement</a>
+            </div>
+        </div>
+    </section>
+
+  <section id="manifeste" class="py-20 px-6 bg-black overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+            
+           <div class="w-full md:w-2/5 flex justify-center relative">
+    <div class="absolute inset-0 bg-[#9ded3a]/20 blur-3xl rounded-full scale-90"></div>
+    
+    <a href="https://www.linkedin.com/in/paolaluyo" target="_blank" class="relative z-10 block group">
+        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-[#9ded3a]/30 overflow-hidden shadow-2xl shadow-[#9ded3a]/10 transition-all duration-500 group-hover:scale-105 group-hover:border-[#9ded3a]">
+            <img src="paola.png" alt="Portrait de Paola Luyo, organisatrice de l'évènement Prendre sa Place en Belgique" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+        </div>
+    </a>
+</div>
+
+            <div class="w-full md:w-3/5 text-left">
+                <div class="mb-8 border-l-2 border-[#9ded3a] pl-6">
+                    <h2 class="sr-only">L'intention derrière l'événement Prendre sa place</h2> 
+        
+                    <h3 class="text-4xl md:text-5xl font-normal mb-1 text-white" style="font-family: 'Shadows Into Light', cursive;">
+                    Paola Luyo
+                </h3>
+                <p class="sa-gradient font-bold tracking-widest uppercase text-xs">Organisatrice & speaker</p>
+            </div>
+
+                <div class="space-y-6 text-gray-400 leading-snug text-sm md:text-base">
+                    <p>On parle beaucoup de performance, de réussite, de bien-être, de développement personnel. Mais on parle rarement de ce qui se joue juste avant :</p>
+                    
+                    <p class="text-white italic font-medium border-l border-white/10 pl-4 py-1 leading-tight">
+                        "Un choix difficile, un changement de cap, un moment où l’on se demande si l’on est encore à la bonne place."
+                    </p>
+
+                    <p>Prendre sa place, c’est un événement qui remet l’essentiel au centre : <span class="text-[#9ded3a] font-bold">la parole vécue.</span></p>
+
+                    <p>Pas de recettes, pas de discours formatés. Juste des paroles vraies, partagées avec clarté et sincérité.</p>
+
+                    <div class="pt-4 space-y-3">
+                        <p><span class="text-[#9ded3a] font-bold tracking-wider uppercase text-xs">— Pour qui ?</span></p>
+                        <p>Pour celles et ceux qui prennent des décisions, traversent des transitions, et savent qu’entendre une parole vraie peut ouvrir un déclic.</p>
+                        
+                        <p><span class="text-[#9ded3a] font-bold tracking-wider uppercase text-xs">— Notre intention</span></p>
+                        <p>Créer un espace de résonance, pour repartir avec plus de clarté et une sensation simple
+                           <span class="text-white italic">“je suis moins seul·e à traverser ça.”</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Section Intention (Contenu PDF) -->
+    <section id="intention" class="py-24 px-6 bg-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Plus qu'une conférence,<br><span class="text-[#9ded3a]">une résonance.</span></h2>
+                <div class="w-20 h-1 bg-[#9ded3a] mb-8"></div>
+                <p class="text-gray-300 mb-6">
+                    <strong>Prendre <span class="sa-gradient">sa</span> place</strong> n'est pas une masterclass sur la réussite. C’est un espace pour regarder lucidement les moments de doute qui précèdent les vrais choix.
+                </p>
+                <p class="text-gray-400 mb-8 leading-relaxed">
+                    Nous croyons que ce travail intérieur est un cheminement, pas une destination. Ici, on ne transmet pas de méthodes "toutes faites". On ouvre des espaces de réflexion à partir de récits vécus, pour que chacun puisse clarifier ses propres choix.
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-[#9ded3a]">
+                      </div> </div>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="card-blur p-8 rounded-2xl border-l-4 border-white">
+                    <h4 class="text-white font-bold mb-2 uppercase text-xs tracking-widest">L'Essence</h4>
+                    <p class="text-lg font-bold">Porter un regard plus juste sur son propre parcours.</p>
+                </div>
+                <div class="card-blur p-8 rounded-2xl border-l-4 border-[#9ded3a]">
+                    <h4 class="text-[#9ded3a] font-bold mb-2 uppercase text-xs tracking-widest">Le Message</h4>
+                    <p class="text-lg font-bold">Reconnaître le doute comme une étape nécessaire avant toute transformation.</p>
+                </div>
+                <div class="card-blur p-8 rounded-2xl border-l-4 border-blue-500">
+                    <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-widest">L'Impact</h4>
+                    <p class="text-lg font-bold">Se sentir plus légitime dans ses décisions et ses orientations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Détails du Contenu (Nouveau Focus PDF) -->
+    <section id="contenu" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center">L'expérience du récit</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-12">
+                    <div class="border-b border-white/5 pb-8">
+                        <h4 class="text-2xl font-bold mb-4 text-[#9ded3a]">Des récits de bascule</h4>
+                        <p class="text-gray-400">Cinq intervenants partagent un moment où quelque chose a dû être reconsidéré :
+une décision, une direction, une posture.
+Pas de théorie. Pas de leçon.
+Uniquement du vécu qui fait écho à des situations réelles.</p>
+                    </div>
+                    <div class="border-b border-white/5 pb-8">
+                        <h4 class="text-2xl font-bold mb-4 text-white">Le format 3x5</h4>
+                        <p class="text-gray-400">Une structure dynamique : 5 intervenants, 15 minutes chacun pour condenser l'essence de leur idée et maximiser l'impact humain et intellectuel.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-[#9ded3a]/10 to-blue-500/10 p-1 rounded-3xl">
+                    <div class="bg-black/40 backdrop-blur-xl p-8 h-full rounded-3xl border border-white/5">
+                        <h4 class="text-xl font-bold mb-6">Au programme de l'édition #1</h4>
+                        <ul class="space-y-6">
+                            <li class="flex gap-4">
+                                <div class="text-[#9ded3a] font-bold mt-1">✓</div>
+                                <div>
+                                    <span class="block font-bold">L'Art de douter</span>
+                                    <span class="text-sm text-gray-500">Comment transformer l'incertitude en boussole.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="text-[#9ded3a] font-bold mt-1">✓</div>
+                                <div>
+                                    <span class="block font-bold">La quête de légitimité</span>
+                                    <span class="text-sm text-gray-500">S'autoriser à être, avant de faire.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="text-[#9ded3a] font-bold mt-1">✓</div>
+                                <div>
+                                    <span class="block font-bold">Temps de partage</span>
+                                    <span class="text-sm text-gray-500">Un espace d'échange libre après les interventions.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Lieu & Prochainement -->
+    <section id="lieu" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h3 class="text-4xl font-bold mb-8">Où aura lieu l'évènement ?</h3>
+            <div class="card-blur p-12 rounded-3xl border-2 border-dashed border-white/10">
+                <div class="mb-6 inline-block p-4 bg-white/5 rounded-full">
+                    <svg class="w-12 h-12 text-[#9ded3a] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-4">Lieu dévoilé prochainement</h4>
+                <p class="text-gray-400 max-w-xl mx-auto mb-8">
+                    L'évènement aura lieu en Belgique en <strong>2026</strong>, la date exacte sera dévoilée très prochainement. Pour cette <strong>première édition </strong>, nous avons sélectionné un lieu inspirant, propice à l'introspection et à la parole vraie. Les détails seront envoyés par email aux inscrit.e.s.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <form action="https://formspree.io/f/mlgwoaow" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
+    <input type="email" name="email" required placeholder="Votre email" class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white">
+    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">M'informer du lieu</button>
+</form>
+                </div>
+            </div>
+        </div>
+        <!-- Décoration de fond -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none scale-150">
+            <div class="logo-container">
+                <div class="w-96 h-96 border-4 border-white rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Candidature -->
+    <section id="candidature" class="py-24 px-6 bg-[#111]">
+        <div class="max-w-4xl mx-auto card-blur p-12 rounded-3xl text-center border-t-2 border-[#9ded3a]">
+                    <h3 class="text-4xl font-bold mb-6">Devenez Intervenant.e</h3>
+            <p class="text-gray-300 mb-10">
+                Vous avez une histoire de bascule à partager ? Nous cherchons des voix authentiques pour cette première édition itinérante.
+            </p>
+            
+           <div class="grid md:grid-cols-2 gap-8 text-left mb-12">
+                <div class="card-blur p-8 rounded-2xl border-t border-white/10 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300">
+                    <h5 class="text-[#9ded3a] font-bold mb-3 uppercase text-xs tracking-widest">L'idée</h5>
+                    <p class="text-white font-bold mb-2">Le point de bascule</p>
+                    <p class="text-sm text-gray-500">Un récit personnel qui ouvre une réflexion universelle sur la place que l'on occupe.</p>
+                </div>
+
+                <div class="card-blur p-8 rounded-2xl border-t border-white/10 hover:border-[#9ded3a]/50 hover:-translate-y-1 transition-all duration-300">
+                    <h5 class="text-[#9ded3a] font-bold mb-3 uppercase text-xs tracking-widest">L'Apport</h5>
+                    <p class="text-white font-bold mb-2">Ce que vous transmettez</p>
+                    <p class="text-sm text-gray-500">Votre expérience devient un point d’appui pour celles et ceux qui écoutent.</p>
+                </div>
+
+                <div class="card-blur p-8 rounded-2xl border-t border-white/10 hover:border-[#9ded3a]/50 hover:-translate-y-1 transition-all duration-300">
+                    <h4 class="text-[#9ded3a] font-bold mb-4 uppercase text-xs tracking-widest">Récit Texte</h4>
+                    <p class="text-white font-bold mb-2">Votre récit écrit</p>
+                    <p class="text-sm text-gray-500">Racontez-nous ce que vous voulez apporter à l'évènement en nous envoyant un email détaillé sur votre parcours.</p>
+                </div>
+
+                <div class="card-blur p-8 rounded-2xl border-t border-white/10 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300">
+                    <h4 class="text-[#9ded3a] font-bold mb-4 uppercase text-xs tracking-widest">Récit Vidéo</h4>
+                    <p class="text-white font-bold mb-2">Votre récit en image</p>
+                    <p class="text-sm text-gray-500">Envoyez-nous une vidéo courte de maximum 3 minutes (lien YouTube, Drive ou WeTransfer par email).</p>
+            </div> <!-- fin du div.grid -->
+
+            </div> <div class="flex justify-center mt-8 md:mt-12 w-full">
+    <a href="mailto:info@prendresaplace.be?subject=Candidature : Soumettre mon récit&body=Bonjour Paola, je souhaite soumettre mon récit..." 
+       class="btn-primary px-10 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg inline-block text-center shadow-lg shadow-[#9ded3a]/20 transition-all hover:scale-105">
+        Soumettre mon récit
+    </a>
+</div>
+    </div> 
+</section>
+     
+ <!-- Sponsors -->
+<section id="sponsoring" class="py-24 px-6 bg-neutral-900/40">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-16 items-start">
+            
+            <div class="w-full lg:w-1/2">
+                <span class="inline-block px-4 py-1 rounded-full border border-cyan-400/30 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6">
+                    Sponsoring
+                </span>
+                
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    Devenez acteur de <br>
+                    <span class="text-cyan-400 italic" style="font-family: 'Shadows Into Light', cursive;">cette bascule.</span>
+                </h2>
+                
+                <p class="text-gray-400 text-base md:text-lg mb-8 leading-snug italic text-left">
+                    Soutenir "Prendre sa place", c’est s’associer à un évènement qui valorise l’authenticité. Laissez-nous vos coordonnées et discutons ensemble de votre impact.
+                </p>
+
+                <div class="space-y-4 text-sm text-gray-500 uppercase tracking-widest font-bold text-left">
+                    <p class="flex items-center gap-3"><span class="text-cyan-400">/</span> Visibilité engagée</p>
+                    <p class="flex items-center gap-3"><span class="text-cyan-400">/</span> Réseau authentique</p>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2 bg-black/40 p-8 rounded-3xl border border-white/5 shadow-2xl relative">
+                <form action="https://formspree.io/f/mojnyjok" method="POST" class="space-y-6">
+                    
+                    <div class="text-left">
+                        <label for="name" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Nom et Prénom</label>
+                        <input type="text" id="name" name="nom_complet" placeholder="Votre nom" required 
+                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                    </div>
+
+                    <div class="text-left">
+                        <label for="email" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Email</label>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required 
+                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                    </div>
+
+                    <div class="text-left">
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="phone" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest">Téléphone</label>
+                            <span class="text-[9px] text-gray-600 uppercase">Belgique (+32)</span>
+                        </div>
+                        <input type="tel" id="phone" name="telephone" placeholder="+32 " required 
+                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                    </div>
+
+                    <div class="flex items-start gap-3 pt-2">
+                        <input type="checkbox" id="consent" required class="mt-1 accent-cyan-400">
+                        <label for="consent" class="text-[10px] text-gray-500 uppercase leading-tight">
+                            J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-full transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] mt-4">
+                        Envoyer ma demande
+                    </button>
+                    
+                    <p class="text-[9px] text-gray-600 text-center uppercase tracking-[0.2em]">
+                        Vos données restent confidentielles • Réponse sous 48h
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-4">
+                <div class="logo-container opacity-50 scale-75">
+                    <div class="logo-circle-outer"></div>
+                    <div class="logo-center-wrapper">
+                        <div class="logo-spinning-core"></div>
+                        <div class="logo-dot"></div>
+                    </div>
+                    <div class="logo-circle-outer"></div>
+                </div>
+                <div>
+                    <div class="text-xl font-black tracking-tighter">PRENDRE <span class="sa-gradient">SA</span> PLACE</div>
+                    <p class="text-[10px] text-gray-500 tracking-widest uppercase">Des paroles vraies</p>
+                </div>
+            </div>
+            
+            <div class="text-center md:text-right text-sm text-gray-400">
+                <p class="mb-1 font-bold text-white">Première édition en Belgique</p>
+                <p class="mb-1">Date & Lieu dévoilés prochainement</p>
+                <p class="text-[#9ded3a]">info@prendresaplace.be</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center text-[10px] text-gray-600 uppercase tracking-widest">
+            © 2026 Prendre sa place | Made in Belgium with ❤️
+        </div>
+    </footer>
+
+     <script>
+    // L'observateur va surveiller quand les sections entrent dans l'écran
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // On ajoute la classe "visible" que tu as créée en haut dans ton CSS
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 }); // Se déclenche quand 10% de la section est visible
+
+    // On applique l'observateur à toutes les balises <section> du site
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+    // Gestion du menu mobile
+    const burger = document.getElementById('mobile-menu-button');
+    const menuListe = document.getElementById('nav-menu');
+
+    if (burger && menuListe) {
+        burger.addEventListener('click', () => {
+            // On bascule l'affichage du menu
+            menuListe.classList.toggle('hidden');
+            
+            // On ajoute les styles pour que le menu s'affiche joliment sous la barre de navigation
+            menuListe.classList.toggle('flex');
+            menuListe.classList.toggle('flex-col');
+            menuListe.classList.toggle('absolute');
+            menuListe.classList.toggle('top-full');
+            menuListe.classList.toggle('left-0');
+            menuListe.classList.toggle('w-full');
+            menuListe.classList.toggle('bg-[#111]/95'); // Fond sombre semi-transparent
+            menuListe.classList.toggle('p-6');
+            menuListe.classList.toggle('border-b');
+            menuListe.classList.toggle('border-white/10');
+        });
+
+        // Fermer le menu automatiquement quand on clique sur un lien (pour naviguer)
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) { // Uniquement sur mobile
+                    menuListe.classList.add('hidden');
+                    menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+                }
+            });
+        });
+    }
+    // Fermer le menu automatiquement quand l'utilisateur scroll
+window.addEventListener('scroll', () => {
+    if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
+        menuListe.classList.add('hidden');
+        menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+    }
+});
+</script>
+</body>
+</html>
