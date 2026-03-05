@@ -154,6 +154,18 @@
             text-transform: uppercase;
         }
 
+        /* --- SOUS-TITRE PROJET --- */
+        .project-subtitle {
+            color: #d1d5db;      /* Gris clair */
+            font-style: italic;  /* Italique */
+            font-size: 0.85rem;  /* Taille adaptée */
+            display: block;      /* Passage à la ligne forcé */
+            margin-top: -0.1rem;  /* Espace avec le titre du dessus */
+            font-weight: 400;    /* Pas de gras */
+            text-transform: none; /* Annule l'uppercase si hérité */
+            letter-spacing: normal; /* Annule le tracking-widest si hérité */
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -276,6 +288,7 @@ section.visible {
         </div>
     </section>
 
+    <!-- Profil Paola Luyo -->
   <section id="manifeste" class="py-20 px-6 bg-black overflow-hidden">
     <div class="max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
@@ -297,19 +310,30 @@ section.visible {
                     <h3 class="text-4xl md:text-5xl font-normal mb-1 text-white" style="font-family: 'Shadows Into Light', cursive;">
                     Paola Luyo
                 </h3>
-                <p class="sa-gradient font-bold tracking-widest uppercase text-xs">Organisatrice & speaker</p>
+                <p class="sa-gradient font-bold tracking-widest uppercase text-xs mb-2">Organisatrice & speaker</p>
+                <p class="project-subtitle">Initiatrice du projet Prendre sa place</p>
             </div>
 
                 <div class="space-y-6 text-gray-400 leading-snug text-sm md:text-base">
+                    <p class="text-[#9ded3a] italic font-normal">
+                     Et si entendre l’histoire de quelqu’un d’autre pouvait changer la manière dont vous regardez la vôtre ?  </p>
+
+                    <p>Après plus de vingt ans de carrière dans la fintech, à prendre des décisions, porter des responsabilités et évoluer dans des environnements exigeants, 
+                       un moment de bascule m’a amenée à me poser une question :</p>
+
+                    <p class="text-white italic font-medium border-l border-white/10 pl-4 py-1 leading-tight">
+                    Pourquoi, même après des années d’expérience et de responsabilités, peut-on encore avoir l’impression de ne pas être vraiment à sa place ?</p>
+                  
                     <p>On parle beaucoup de performance, de réussite, de bien-être, de développement personnel. Mais on parle rarement de ce qui se joue juste avant :</p>
                     
                     <p class="text-white italic font-medium border-l border-white/10 pl-4 py-1 leading-tight">
                         "Un choix difficile, un changement de cap, un moment où l’on se demande si l’on est encore à la bonne place."
                     </p>
 
-                    <p>Prendre sa place, c’est un événement qui remet l’essentiel au centre : <span class="text-[#9ded3a] font-bold">la parole vécue.</span></p>
+                    <p>Prendre sa place, c’est un événement qui remet l’essentiel au centre : <span class="text-[#9ded3a] font-bold">la parole vécue.</span> 
+                    Pas de recettes, pas de discours formatés. Juste des paroles vraies, partagées avec clarté et sincérité.</p>
 
-                    <p>Pas de recettes, pas de discours formatés. Juste des paroles vraies, partagées avec clarté et sincérité.</p>
+                 
 
                     <div class="pt-4 space-y-3">
                         <p><span class="text-[#9ded3a] font-bold tracking-wider uppercase text-xs">— Pour qui ?</span></p>
@@ -639,6 +663,67 @@ window.addEventListener('scroll', () => {
         menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
     }
 });
-</script>
+    // ---CONFIGURATION GOOGLE ANALYTICS ---
+        const GA_ID = 'G-5WVVF44VEB'; // <--- REMPLACE PAR TON ID RÉEL
+
+        function loadGA() {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+            document.head.appendChild(script);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', GA_ID);
+        }
+
+    // ---GESTION DU BANDEAU COOKIE ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const consent = localStorage.getItem('cookieConsent');
+            const banner = document.getElementById('cookie-banner');
+            
+            if (!consent) {
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-20', 'opacity-0');
+                }, 1000);
+            } else if (consent === 'accepted') {
+                loadGA();
+            }
+        });
+
+        window.acceptCookies = function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            loadGA();
+            hideBanner();
+        };
+
+        window.refuseCookies = function() {
+            localStorage.setItem('cookieConsent', 'refused');
+            hideBanner();
+        };
+
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => { banner.style.display = 'none'; }, 700);
+        }
+    </script>
+
+<div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md bg-[#1a1a1a] border border-[#9ded3a]/30 p-6 rounded-2xl shadow-2xl z-[100] transform translate-y-20 opacity-0 transition-all duration-700">
+    <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-[#9ded3a] rounded-full animate-pulse"></div>
+            <p class="text-white font-bold text-sm tracking-widest uppercase">Respect de la vie privée</p>
+        </div>
+        <p class="text-gray-400 text-xs leading-relaxed">
+            Ce site utilise des cookies pour mesurer l'audience et personnaliser votre navigation. Ces données nous aident à faire grandir le projet "Prendre sa place". Acceptez-vous l'utilisation de ces outils ?
+        </p>
+        <div class="flex gap-3">
+            <button onclick="acceptCookies()" class="bg-[#9ded3a] text-black text-xs font-bold py-2 px-6 rounded-lg hover:scale-105 transition-transform">Accepter</button>
+            <button onclick="refuseCookies()" class="bg-transparent border border-white/10 text-white text-xs font-bold py-2 px-6 rounded-lg hover:bg-white/5 transition-colors">Refuser</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
