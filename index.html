@@ -231,6 +231,8 @@ section.visible {
   gtag('config', 'G-5WVVF44VEB');
 </script>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 </head>
         <body class="overflow-x-hidden">
 
@@ -607,8 +609,7 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
             </a>
         </div>
     </footer>
-    </footer>
-
+    
      <script>
     // L'observateur va surveiller quand les sections entrent dans l'écran
     const observer = new IntersectionObserver((entries) => {
@@ -708,6 +709,7 @@ window.addEventListener('scroll', () => {
             banner.classList.add('translate-y-20', 'opacity-0');
             setTimeout(() => { banner.style.display = 'none'; }, 700);
         }
+        
     </script>
 
 <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md bg-[#1a1a1a] border border-[#9ded3a]/30 p-6 rounded-2xl shadow-2xl z-[100] transform translate-y-20 opacity-0 transition-all duration-700">
