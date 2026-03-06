@@ -231,6 +231,8 @@ section.visible {
   gtag('config', 'G-5WVVF44VEB');
 </script>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 </head>
         <body class="overflow-x-hidden">
 
@@ -394,9 +396,9 @@ section.visible {
                     <div class="border-b border-white/5 pb-8">
                         <h4 class="text-2xl font-bold mb-4 text-[#9ded3a]">Des récits de bascule</h4>
                         <p class="text-gray-400">Cinq intervenants partagent un moment où quelque chose a dû être reconsidéré :
-une décision, une direction, une posture.
-Pas de théorie. Pas de leçon.
-Uniquement du vécu qui fait écho à des situations réelles.</p>
+                        une décision, une direction, une posture.
+                        Pas de théorie. Pas de leçon.
+                        Uniquement du vécu qui fait écho à des situations réelles.</p>
                     </div>
                     <div class="border-b border-white/5 pb-8">
                         <h4 class="text-2xl font-bold mb-4 text-white">Le format 3x5</h4>
@@ -450,8 +452,23 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <form action="https://formspree.io/f/mlgwoaow" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
-    <input type="email" name="email" required placeholder="Votre email" class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white">
-    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">M'informer du lieu</button>
+
+    <!-- Honeypot anti-spam -->
+    <input type="text" name="_gotcha" style="display:none">
+
+     <input 
+        type="email" 
+        name="email" 
+        required 
+        pattern=".+@.+\..+" 
+        placeholder="Votre email" 
+        class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white"
+    >
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible"></div>
+
+    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">
+        M'informer du lieu
+    </button>
 </form>
                 </div>
             </div>
@@ -564,6 +581,8 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
                             J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
                         </label>
                     </div>
+
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible"></div>
 
                     <button type="submit" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-full transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] mt-4">
                         Envoyer ma demande
