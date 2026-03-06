@@ -452,8 +452,23 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <form action="https://formspree.io/f/mlgwoaow" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
-    <input type="email" name="email" required placeholder="Votre email" class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white">
-    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">M'informer du lieu</button>
+    
+    <!-- Honeypot anti-spam -->
+    <input type="text" name="_gotcha" style="display:none">
+
+     <input 
+        type="email" 
+        name="email" 
+        required 
+        pattern=".+@.+\..+" 
+        placeholder="Votre email" 
+        class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white"
+    >
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible"></div>
+
+    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">
+        M'informer du lieu
+    </button>
 </form>
                 </div>
             </div>
