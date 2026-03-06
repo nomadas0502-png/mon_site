@@ -707,7 +707,7 @@ window.addEventListener('scroll', () => {
             if (!consent) {
                 setTimeout(() => {
                     banner.classList.remove('translate-y-20', 'opacity-0');
-                }, 1000);
+                }, 300);
             } else if (consent === 'accepted') {
                 loadGA();
             }
