@@ -269,7 +269,7 @@ section.visible {
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden visible">
         <div class="glow-circle w-[500px] h-[500px] bg-[#9ded3a] -top-20 -left-20"></div>
         <div class="glow-circle w-[400px] h-[400px] bg-blue-600 bottom-0 right-0"></div>
 
@@ -680,45 +680,33 @@ section.visible {
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
-    // Gestion du menu mobile
-    const burger = document.getElementById('mobile-menu-button');
-    const menuListe = document.getElementById('nav-menu');
-
+  // Gestion du menu mobile optimisée
     if (burger && menuListe) {
-        burger.addEventListener('click', () => {
-            // On bascule l'affichage du menu
-            menuListe.classList.toggle('hidden');
-            
-            // On ajoute les styles pour que le menu s'affiche joliment sous la barre de navigation
-            menuListe.classList.toggle('flex');
-            menuListe.classList.toggle('flex-col');
-            menuListe.classList.toggle('absolute');
-            menuListe.classList.toggle('top-full');
-            menuListe.classList.toggle('left-0');
-            menuListe.classList.toggle('w-full');
-            menuListe.classList.toggle('bg-[#111]/95'); // Fond sombre semi-transparent
-            menuListe.classList.toggle('p-6');
-            menuListe.classList.toggle('border-b');
-            menuListe.classList.toggle('border-white/10');
-        });
+        burger.onclick = (e) => {
+            e.preventDefault();
+            const isOpen = !menuListe.classList.contains('hidden');
 
-        // Fermer le menu automatiquement quand on clique sur un lien (pour naviguer)
+            if (isOpen) {
+                // Fermeture rapide
+                menuListe.classList.add('hidden');
+                menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/98', 'p-6', 'border-b', 'border-white/10', 'z-[60]');
+            } else {
+                // Ouverture immédiate
+                menuListe.classList.remove('hidden');
+                menuListe.classList.add('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/98', 'p-6', 'border-b', 'border-white/10', 'z-[60]');
+            }
+        };
+
+        // Fermer le menu automatiquement quand on clique sur un lien
         document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 768) { // Uniquement sur mobile
+            link.onclick = () => {
+                if (window.innerWidth < 768) {
                     menuListe.classList.add('hidden');
-                    menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+                    menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/98', 'p-6', 'border-b', 'border-white/10', 'z-[60]');
                 }
-            });
+            };
         });
     }
-    // Fermer le menu automatiquement quand l'utilisateur scroll
-window.addEventListener('scroll', () => {
-    if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
-        menuListe.classList.add('hidden');
-        menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
-    }
-});
     // ---CONFIGURATION GOOGLE ANALYTICS ---
         const GA_ID = 'G-5WVVF44VEB'; // <--- REMPLACE PAR TON ID RÉEL
 
