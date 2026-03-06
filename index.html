@@ -231,6 +231,8 @@ section.visible {
   gtag('config', 'G-5WVVF44VEB');
 </script>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 </head>
         <body class="overflow-x-hidden">
 
@@ -450,8 +452,23 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <form action="https://formspree.io/f/mlgwoaow" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
-    <input type="email" name="email" required placeholder="Votre email" class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white">
-    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">M'informer du lieu</button>
+    
+    <!-- Honeypot anti-spam -->
+    <input type="text" name="_gotcha" style="display:none">
+
+     <input 
+        type="email" 
+        name="email" 
+        required 
+        pattern=".+@.+\..+" 
+        placeholder="Votre email" 
+        class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white"
+    >
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible" data-callback="onTurnstileSuccess"></div>
+
+    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">
+        M'informer du lieu
+    </button>
 </form>
                 </div>
             </div>
@@ -534,6 +551,9 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
             <div class="w-full lg:w-1/2 bg-black/40 p-8 rounded-3xl border border-white/5 shadow-2xl relative">
                 <form action="https://formspree.io/f/mojnyjok" method="POST" class="space-y-6">
                     
+                    <!-- Honeypot anti-spam -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    
                     <div class="text-left">
                         <label for="name" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Nom et Prénom</label>
                         <input type="text" id="name" name="nom_complet" placeholder="Votre nom" required 
@@ -542,8 +562,8 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
 
                     <div class="text-left">
                         <label for="email" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Email</label>
-                        <input type="email" id="email" name="email" placeholder="votre@email.com" required 
-                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required pattern=".+@.+\..+" 
+                        class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
                     </div>
 
                     <div class="text-left">
@@ -555,12 +575,14 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
                             class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
                     </div>
 
-                    <div class="flex items-start gap-3 pt-2">
-                        <input type="checkbox" id="consent" required class="mt-1 accent-cyan-400">
-                        <label for="consent" class="text-[10px] text-gray-500 uppercase leading-tight">
-                            J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
-                        </label>
-                    </div>
+                <div class="flex items-start gap-3 pt-2">
+                    <input type="checkbox" id="consent-sponsor" required class="mt-1 accent-cyan-400">
+                    <label for="consent-sponsor" class="text-[10px] text-gray-500 uppercase leading-tight">
+                        J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
+                    </label>
+                </div>
+
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible" data-callback="onTurnstileSuccess"></div>
 
                     <button type="submit" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-full transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] mt-4">
                         Envoyer ma demande
@@ -607,8 +629,7 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
             </a>
         </div>
     </footer>
-    </footer>
-
+    
      <script>
     // L'observateur va surveiller quand les sections entrent dans l'écran
     const observer = new IntersectionObserver((entries) => {
@@ -663,6 +684,11 @@ window.addEventListener('scroll', () => {
         menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
     }
 });
+
+    // ---TURNSTILE CALLBACK ---
+    function onTurnstileSuccess(token) {
+        console.log('Turnstile validé ✓');
+    }
     // ---CONFIGURATION GOOGLE ANALYTICS ---
         const GA_ID = 'G-5WVVF44VEB'; // <--- REMPLACE PAR TON ID RÉEL
 
