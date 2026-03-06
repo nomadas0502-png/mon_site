@@ -655,104 +655,78 @@ section:first-of-type {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // On ajoute la classe "visible" que tu as créée en haut dans ton CSS
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1 }); // Se déclenche quand 10% de la section est visible
+    }, { threshold: 0.1 });
 
-    // On applique l'observateur à toutes les balises <section> du site
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
-    // Gestion du menu mobile
+
+    // 2. GESTION DU MENU MOBILE (Ultra-réactif)
     const burger = document.getElementById('mobile-menu-button');
     const menuListe = document.getElementById('nav-menu');
 
     if (burger && menuListe) {
-        burger.addEventListener('click', () => {
-            // On bascule l'affichage du menu
+        burger.onclick = (e) => {
+            e.preventDefault();
             menuListe.classList.toggle('hidden');
-            
-            // On ajoute les styles pour que le menu s'affiche joliment sous la barre de navigation
             menuListe.classList.toggle('flex');
             menuListe.classList.toggle('flex-col');
             menuListe.classList.toggle('absolute');
             menuListe.classList.toggle('top-full');
             menuListe.classList.toggle('left-0');
             menuListe.classList.toggle('w-full');
-            menuListe.classList.toggle('bg-[#111]/95'); // Fond sombre semi-transparent
+            menuListe.classList.toggle('bg-[#111]/95');
             menuListe.classList.toggle('p-6');
-            menuListe.classList.toggle('border-b');
-            menuListe.classList.toggle('border-white/10');
-        });
-
-        // Fermer le menu automatiquement quand on clique sur un lien (pour naviguer)
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 768) { // Uniquement sur mobile
-                    menuListe.classList.add('hidden');
-                    menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
-                }
-            });
-        });
+        };
     }
-    // Fermer le menu automatiquement quand l'utilisateur scroll
-window.addEventListener('scroll', () => {
-    if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
-        menuListe.classList.add('hidden');
-        menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+
+    // 3. GOOGLE ANALYTICS
+    const GA_ID = 'G-5WVVF44VEB';
+    function loadGA() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GA_ID);
     }
-});
-    // ---CONFIGURATION GOOGLE ANALYTICS ---
-        const GA_ID = 'G-5WVVF44VEB'; // <--- REMPLACE PAR TON ID RÉEL
 
-        function loadGA() {
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-            document.head.appendChild(script);
-
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', GA_ID);
-        }
-
-    // ---GESTION DU BANDEAU COOKIE ---
-        window.addEventListener('DOMContentLoaded', () => {
-            const consent = localStorage.getItem('cookieConsent');
-            const banner = document.getElementById('cookie-banner');
-            
-            if (!consent) {
-                setTimeout(() => {
-                    banner.classList.remove('translate-y-20', 'opacity-0');
-                }, 300);
-            } else if (consent === 'accepted') {
-                loadGA();
-            }
-        });
-
-        window.acceptCookies = function() {
-            localStorage.setItem('cookieConsent', 'accepted');
+    // 4. BANDEAU COOKIES
+    window.addEventListener('DOMContentLoaded', () => {
+        const consent = localStorage.getItem('cookieConsent');
+        const banner = document.getElementById('cookie-banner');
+        if (!consent) {
+            setTimeout(() => {
+                banner.classList.remove('translate-y-20', 'opacity-0');
+            }, 500);
+        } else if (consent === 'accepted') {
             loadGA();
-            hideBanner();
-        };
-
-        window.refuseCookies = function() {
-            localStorage.setItem('cookieConsent', 'refused');
-            hideBanner();
-        };
-
-        function hideBanner() {
-            const banner = document.getElementById('cookie-banner');
-            banner.classList.add('translate-y-20', 'opacity-0');
-            setTimeout(() => { banner.style.display = 'none'; }, 700);
         }
+    });
 
-     </script> <script> document.addEventListener('DOMContentLoaded', () => {
+    window.acceptCookies = function() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        loadGA();
+        hideBanner();
+    };
 
-    // Liste des formulaires à gérer
+    window.refuseCookies = function() {
+        localStorage.setItem('cookieConsent', 'refused');
+        hideBanner();
+    };
+
+    function hideBanner() {
+        const banner = document.getElementById('cookie-banner');
+        banner.classList.add('translate-y-20', 'opacity-0');
+        setTimeout(() => { banner.style.display = 'none'; }, 700);
+    }
+
+    // 5. GESTION DES FORMULAIRES (Fusionnés pour éviter les doublons)
     const forms = [
         { id: 'form-lieu', color: 'bg-[#9ded3a]/10', text: 'text-[#9ded3a]' },
         { id: 'form-sponsoring', color: 'bg-cyan-400/10', text: 'text-cyan-400' }
@@ -764,49 +738,30 @@ window.addEventListener('scroll', () => {
 
         form.onsubmit = async (e) => {
             e.preventDefault();
-            
             const btn = form.querySelector('button');
             const originalBtnText = btn.innerHTML;
-            btn.innerHTML = "Envoi en cours...";
+            btn.innerHTML = "Envoi...";
             btn.disabled = true;
-
-            const formData = new FormData(form);
 
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
-                    body: formData,
+                    body: new FormData(form),
                     headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
-                    form.innerHTML = `
-                        <div class="text-center py-12 animate-[fadeIn_0.5s_ease-out]">
-                            <div class="inline-block p-4 ${config.color} rounded-full mb-6">
-                                <svg class="w-12 h-12 ${config.text}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Message envoyé !</h3>
-                            <p class="text-gray-400">Merci de votre confiance. <br> Je vous recontacte très vite.</p>
-                        </div>
-                    `;
+                    form.innerHTML = `<div class="text-center py-8"><h3 class="text-white font-bold">✓ Message envoyé !</h3></div>`;
                 } else {
-                    const data = await response.json();
-                    if (data.errors) {
-                        alert(data.errors.map(error => error.message).join(", "));
-                    } else {
-                        throw new Error();
-                    }
+                    throw new Error();
                 }
             } catch (error) {
-                alert("Erreur de sécurité Turnstile. Assurez-vous d'être sur le bon domaine.");
+                alert("Erreur. Veuillez vérifier le captcha.");
                 btn.innerHTML = originalBtnText;
                 btn.disabled = false;
             }
         };
     });
-});
 </script>   
     
 <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md bg-[#1a1a1a] border border-[#9ded3a]/30 p-6 rounded-2xl shadow-2xl z-[100] transform translate-y-20 opacity-0 transition-all duration-700">
