@@ -683,9 +683,18 @@ window.addEventListener('scroll', () => {
 });
 
     // ---TURNSTILE CALLBACK ---
-    function onTurnstileSuccess(token) {
-        console.log('Turnstile validé ✓');
-    }
+function onTurnstileSuccess(token) {
+    document.querySelectorAll('form').forEach(form => {
+        let input = form.querySelector('input[name="cf-turnstile-response"]');
+        if (!input) {
+            input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'cf-turnstile-response';
+            form.appendChild(input);
+        }
+        input.value = token;
+    });
+}
     // ---CONFIGURATION GOOGLE ANALYTICS ---
         const GA_ID = 'G-5WVVF44VEB'; // <--- REMPLACE PAR TON ID RÉEL
 
