@@ -174,33 +174,13 @@
 section {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: all 0.8s ease-out;
 }
 
 /* La classe qui sera ajoutée par le script pour révéler */
 section.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-/* CORRECTIF ÉCRAN NOIR : On force la première section à être visible de suite */
-section:first-of-type {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-/* CORRECTIF MENU MOBILE : Affichage instantané */
-#nav-menu.mobile-open {
-    display: flex !important;
-    flex-direction: column !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    width: 100% !important;
-    background-color: rgba(17, 17, 17, 0.98) !important;
-    padding: 1.5rem !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    z-index: 100 !important;
+    opacity: 1;
+    transform: translateY(0);
 }
     </style>
     
@@ -217,7 +197,7 @@ section:first-of-type {
   "@context": "https://schema.org",
   "@type": "Event",
   "name": "Prendre sa place",
-  "startDate": "2026-09-23T18:00",
+  "startDate": "2026-05-23T18:00",
   "endDate": "2026-05-23T23:00",
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -250,8 +230,6 @@ section:first-of-type {
 
   gtag('config', 'G-5WVVF44VEB');
 </script>
-
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 </head>
         <body class="overflow-x-hidden">
@@ -416,9 +394,9 @@ section:first-of-type {
                     <div class="border-b border-white/5 pb-8">
                         <h4 class="text-2xl font-bold mb-4 text-[#9ded3a]">Des récits de bascule</h4>
                         <p class="text-gray-400">Cinq intervenants partagent un moment où quelque chose a dû être reconsidéré :
-                        une décision, une direction, une posture.
-                        Pas de théorie. Pas de leçon.
-                        Uniquement du vécu qui fait écho à des situations réelles.</p>
+une décision, une direction, une posture.
+Pas de théorie. Pas de leçon.
+Uniquement du vécu qui fait écho à des situations réelles.</p>
                     </div>
                     <div class="border-b border-white/5 pb-8">
                         <h4 class="text-2xl font-bold mb-4 text-white">Le format 3x5</h4>
@@ -471,24 +449,9 @@ section:first-of-type {
                     L'évènement aura lieu en Belgique en <strong>2026</strong>, la date exacte sera dévoilée très prochainement. Pour cette <strong>première édition </strong>, nous avons sélectionné un lieu inspirant, propice à l'introspection et à la parole vraie. Les détails seront envoyés par email aux inscrit.e.s.
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <form id="form-lieu" action="https://formspree.io/f/mlgwoaow" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
-
-    <!-- Honeypot anti-spam -->
-    <input type="text" name="_gotcha" style="display:none">
-
-     <input 
-        type="email" 
-        name="email" 
-        required 
-        pattern=".+@.+\..+" 
-        placeholder="Votre email" 
-        class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white"
-    >
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible"></div>
-
-    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">
-        M'informer du lieu
-    </button>
+                    <form action="https://formspree.io/f/mlgwoaow" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
+    <input type="email" name="email" required placeholder="Votre email" class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white">
+    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">M'informer du lieu</button>
 </form>
                 </div>
             </div>
@@ -569,10 +532,7 @@ section:first-of-type {
             </div>
 
             <div class="w-full lg:w-1/2 bg-black/40 p-8 rounded-3xl border border-white/5 shadow-2xl relative">
-                <form id="form-sponsoring" action="https://formspree.io/f/mojnyjok" method="POST" class="space-y-6">
-
-                    <!-- Honeypot anti-spam -->
-                    <input type="text" name="_gotcha" style="display:none">
+                <form action="https://formspree.io/f/mojnyjok" method="POST" class="space-y-6">
                     
                     <div class="text-left">
                         <label for="name" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Nom et Prénom</label>
@@ -582,8 +542,8 @@ section:first-of-type {
 
                     <div class="text-left">
                         <label for="email" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Email</label>
-                        <input type="email" id="email" name="email" placeholder="votre@email.com" required pattern=".+@.+\..+" 
-                        class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required 
+                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
                     </div>
 
                     <div class="text-left">
@@ -601,8 +561,6 @@ section:first-of-type {
                             J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
                         </label>
                     </div>
-
-                    <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible"></div>
 
                     <button type="submit" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-full transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] mt-4">
                         Envoyer ma demande
@@ -649,121 +607,109 @@ section:first-of-type {
             </a>
         </div>
     </footer>
-    
+    </footer>
+
      <script>
     // L'observateur va surveiller quand les sections entrent dans l'écran
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // On ajoute la classe "visible" que tu as créée en haut dans ton CSS
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.1 }); // Se déclenche quand 10% de la section est visible
 
+    // On applique l'observateur à toutes les balises <section> du site
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
-
-    // 2. GESTION DU MENU MOBILE (Ultra-réactif)
+    // Gestion du menu mobile
     const burger = document.getElementById('mobile-menu-button');
     const menuListe = document.getElementById('nav-menu');
 
     if (burger && menuListe) {
-        burger.onclick = (e) => {
-            e.preventDefault();
+        burger.addEventListener('click', () => {
+            // On bascule l'affichage du menu
             menuListe.classList.toggle('hidden');
+            
+            // On ajoute les styles pour que le menu s'affiche joliment sous la barre de navigation
             menuListe.classList.toggle('flex');
             menuListe.classList.toggle('flex-col');
             menuListe.classList.toggle('absolute');
             menuListe.classList.toggle('top-full');
             menuListe.classList.toggle('left-0');
             menuListe.classList.toggle('w-full');
-            menuListe.classList.toggle('bg-[#111]/95');
+            menuListe.classList.toggle('bg-[#111]/95'); // Fond sombre semi-transparent
             menuListe.classList.toggle('p-6');
-        };
-    }
+            menuListe.classList.toggle('border-b');
+            menuListe.classList.toggle('border-white/10');
+        });
 
-    // 3. GOOGLE ANALYTICS
-    const GA_ID = 'G-5WVVF44VEB';
-    function loadGA() {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-        document.head.appendChild(script);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', GA_ID);
-    }
-
-    // 4. BANDEAU COOKIES
-    window.addEventListener('DOMContentLoaded', () => {
-        const consent = localStorage.getItem('cookieConsent');
-        const banner = document.getElementById('cookie-banner');
-        if (!consent) {
-            setTimeout(() => {
-                banner.classList.remove('translate-y-20', 'opacity-0');
-            }, 500);
-        } else if (consent === 'accepted') {
-            loadGA();
-        }
-    });
-
-    window.acceptCookies = function() {
-        localStorage.setItem('cookieConsent', 'accepted');
-        loadGA();
-        hideBanner();
-    };
-
-    window.refuseCookies = function() {
-        localStorage.setItem('cookieConsent', 'refused');
-        hideBanner();
-    };
-
-    function hideBanner() {
-        const banner = document.getElementById('cookie-banner');
-        banner.classList.add('translate-y-20', 'opacity-0');
-        setTimeout(() => { banner.style.display = 'none'; }, 700);
-    }
-
-    // 5. GESTION DES FORMULAIRES (Fusionnés pour éviter les doublons)
-    const forms = [
-        { id: 'form-lieu', color: 'bg-[#9ded3a]/10', text: 'text-[#9ded3a]' },
-        { id: 'form-sponsoring', color: 'bg-cyan-400/10', text: 'text-cyan-400' }
-    ];
-
-    forms.forEach(config => {
-        const form = document.getElementById(config.id);
-        if (!form) return;
-
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalBtnText = btn.innerHTML;
-            btn.innerHTML = "Envoi...";
-            btn.disabled = true;
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    form.innerHTML = `<div class="text-center py-8"><h3 class="text-white font-bold">✓ Message envoyé !</h3></div>`;
-                } else {
-                    throw new Error();
+        // Fermer le menu automatiquement quand on clique sur un lien (pour naviguer)
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) { // Uniquement sur mobile
+                    menuListe.classList.add('hidden');
+                    menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
                 }
-            } catch (error) {
-                alert("Erreur. Veuillez vérifier le captcha.");
-                btn.innerHTML = originalBtnText;
-                btn.disabled = false;
+            });
+        });
+    }
+    // Fermer le menu automatiquement quand l'utilisateur scroll
+window.addEventListener('scroll', () => {
+    if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
+        menuListe.classList.add('hidden');
+        menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+    }
+});
+    // ---CONFIGURATION GOOGLE ANALYTICS ---
+        const GA_ID = 'G-5WVVF44VEB'; // <--- REMPLACE PAR TON ID RÉEL
+
+        function loadGA() {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+            document.head.appendChild(script);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', GA_ID);
+        }
+
+    // ---GESTION DU BANDEAU COOKIE ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const consent = localStorage.getItem('cookieConsent');
+            const banner = document.getElementById('cookie-banner');
+            
+            if (!consent) {
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-20', 'opacity-0');
+                }, 1000);
+            } else if (consent === 'accepted') {
+                loadGA();
             }
+        });
+
+        window.acceptCookies = function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            loadGA();
+            hideBanner();
         };
-    });
-</script>   
-    
+
+        window.refuseCookies = function() {
+            localStorage.setItem('cookieConsent', 'refused');
+            hideBanner();
+        };
+
+        function hideBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-20', 'opacity-0');
+            setTimeout(() => { banner.style.display = 'none'; }, 700);
+        }
+    </script>
+
 <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md bg-[#1a1a1a] border border-[#9ded3a]/30 p-6 rounded-2xl shadow-2xl z-[100] transform translate-y-20 opacity-0 transition-all duration-700">
     <div class="flex flex-col gap-4">
         <div class="flex items-center gap-3">
