@@ -464,8 +464,7 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
         placeholder="Votre email" 
         class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white"
     >
-        <div id="turnstile-lieu" class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible" data-callback="onTurnstileSuccess"></div>
-
+        
     <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">
         M'informer du lieu
     </button>
@@ -581,8 +580,6 @@ Uniquement du vécu qui fait écho à des situations réelles.</p>
                         J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
                     </label>
                 </div>
-
-                <div id="turnstile-sponsor" class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible" data-callback="onTurnstileSuccess"></div>
 
                     <button type="submit" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-full transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] mt-4">
                         Envoyer ma demande
@@ -751,5 +748,13 @@ window.addEventListener('scroll', () => {
         </div>
     </div>
 </div>
+
+<!-- Widget Turnstile unique -->
+<div id="turnstile-global" class="cf-turnstile" 
+     data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" 
+     data-size="invisible" 
+     data-callback="onTurnstileSuccess">
+</div>
+
 </body>
 </html>
