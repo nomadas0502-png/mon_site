@@ -514,46 +514,11 @@ section.visible {
                     <p class="text-sm text-gray-500">Envoyez-nous une vidéo courte de maximum 3 minutes (lien YouTube, Drive ou WeTransfer par email).</p>
             </div> <!-- fin du div.grid -->
 
-            </div> <div class="max-w-2xl mx-auto mt-12 bg-black/20 p-8 rounded-3xl border border-white/5 shadow-2xl text-left">
-    <form id="form-candidature" action="https://formspree.io/f/xlgwozrn" method="POST" class="space-y-6">
-        
-        <input type="text" name="_gotcha" style="display:none">
-        
-        <div class="grid md:grid-cols-2 gap-6">
-            <div>
-                <label class="block text-[#9ded3a] text-[10px] font-bold uppercase tracking-widest mb-2">Votre Nom</label>
-                <input type="text" name="nom" required placeholder="Nom complet" 
-                    class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-[#9ded3a] transition-colors placeholder:text-gray-700">
-            </div>
-            <div>
-                <label class="block text-[#9ded3a] text-[10px] font-bold uppercase tracking-widest mb-2">Email</label>
-                <input type="email" name="email" required placeholder="votre@email.com"
-                    class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-[#9ded3a] transition-colors placeholder:text-gray-700">
-            </div>
-        </div>
-
-        <div>
-            <label class="block text-[#9ded3a] text-[10px] font-bold uppercase tracking-widest mb-2">Votre projet de récit</label>
-            <textarea name="message" required placeholder="Décrivez en quelques lignes votre point de bascule..." rows="4"
-                class="w-full bg-white/5 border border-white/10 rounded-2xl text-white px-4 py-3 focus:outline-none focus:border-[#9ded3a] transition-colors resize-none placeholder:text-gray-700"></textarea>
-        </div>
-
-        <div>
-            <label class="block text-[#9ded3a] text-[10px] font-bold uppercase tracking-widest mb-2">Lien Vidéo ou Portfolio (optionnel)</label>
-            <input type="url" name="lien" placeholder="Lien YouTube, Drive ou WeTransfer" 
-                class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-[#9ded3a] transition-colors placeholder:text-gray-700">
-        </div>
-
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" data-size="invisible"></div>
-
-        <button type="submit" class="btn-primary w-full py-4 rounded-full font-bold shadow-lg shadow-[#9ded3a]/20">
-            Soumettre mon récit
-        </button>
-        
-        <p class="text-[9px] text-gray-600 text-center uppercase tracking-[0.2em]">
-            Besoin d'aide ? Contactez-nous sur <span class="text-white">info@prendresaplace.be</span>
-        </p>
-    </form>
+            </div> <div class="flex justify-center mt-8 md:mt-12 w-full">
+    <a href="mailto:info@prendresaplace.be?subject=Candidature : Soumettre mon récit&body=Bonjour Paola, je souhaite soumettre mon récit..." 
+       class="btn-primary px-10 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg inline-block text-center shadow-lg shadow-[#9ded3a]/20 transition-all hover:scale-105">
+        Soumettre mon récit
+    </a>
 </div>
     </div> 
 </section>
@@ -765,18 +730,15 @@ window.addEventListener('scroll', () => {
             setTimeout(() => { banner.style.display = 'none'; }, 700);
         }
 
-     </script> 
-     
-     <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Liste des formulaires à gérer avec leurs styles de succès
-    const formsConfig = [
+     </script> <script> document.addEventListener('DOMContentLoaded', () => {
+
+    // Liste des formulaires à gérer
+    const forms = [
         { id: 'form-lieu', color: 'bg-[#9ded3a]/10', text: 'text-[#9ded3a]' },
-        { id: 'form-sponsoring', color: 'bg-cyan-400/10', text: 'text-cyan-400' },
-        { id: 'form-candidature', color: 'bg-[#9ded3a]/10', text: 'text-[#9ded3a]' }
+        { id: 'form-sponsoring', color: 'bg-cyan-400/10', text: 'text-cyan-400' }
     ];
 
-    formsConfig.forEach(config => {
+    forms.forEach(config => {
         const form = document.getElementById(config.id);
         if (!form) return;
 
@@ -785,8 +747,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const btn = form.querySelector('button');
             const originalBtnText = btn.innerHTML;
-            
-            // On désactive le bouton pour éviter les doubles envois
             btn.innerHTML = "Envoi en cours...";
             btn.disabled = true;
 
@@ -800,7 +760,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    // Animation de succès personnalisée
                     form.innerHTML = `
                         <div class="text-center py-12 animate-[fadeIn_0.5s_ease-out]">
                             <div class="inline-block p-4 ${config.color} rounded-full mb-6">
@@ -814,14 +773,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                 } else {
                     const data = await response.json();
-                    throw new Error(data.errors ? data.errors[0].message : "Erreur lors de l'envoi");
+                    if (data.errors) {
+                        alert(data.errors.map(error => error.message).join(", "));
+                    } else {
+                        throw new Error();
+                    }
                 }
             } catch (error) {
-                // En cas d'erreur Turnstile ou réseau
-                alert("Note : Si l'erreur persiste, assurez-vous de valider le captcha ou contactez-moi directement par email.");
+                alert("Erreur de sécurité Turnstile. Assurez-vous d'être sur le bon domaine.");
                 btn.innerHTML = originalBtnText;
                 btn.disabled = false;
-                console.error("Erreur formulaire:", error);
             }
         };
     });
