@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Prendre sa place - Récits et Résonances</title>
+    <meta name="description" content="Belle carrière mais sentiment de ne pas être à sa place ? Découvrez pourquoi la réussite professionnelle ne suffit pas toujours à créer un sentiment d’alignement et comment comprendre ce décalage intérieur.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --accent-green: #9ded3a;
+            --accent-blue: #3b82f6;
+            --text-gray: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-gray);
+            scroll-behavior: smooth;
+        }
+
+        .glow-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .card-blur {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card-blur:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        .sa-gradient {
+            background: linear-gradient(to bottom right, #9ded3a, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline;
+            line-height: 1.15;
+            padding-bottom: 0.08em;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(157, 237, 58, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* --- LOGO DYNAMIQUE --- */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-circle-outer {
+            width: 28px;
+            height: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .logo-center-wrapper {
+            position: relative;
+            width: 38px;
+            height: 38px;
+            margin: 0 -10px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-spinning-core {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-green), transparent 60%);
+            animation: spin-logo 2s linear infinite;
+            filter: blur(1px);
+        }
+
+        .logo-spinning-core::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            z-index: 3;
+        }
+
+        @keyframes spin-logo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blog-tag {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 99px;
+            background: rgba(157, 237, 58, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(157, 237, 58, 0.2);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4 backdrop-blur-md border-b border-white/5 bg-[#1a1a1a]/95">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-4">
+            <div class="logo-container">
+                <div class="logo-circle-outer"></div>
+                <div class="logo-center-wrapper">
+                    <div class="logo-spinning-core"></div>
+                    <div class="logo-dot"></div>
+                </div>
+                <div class="logo-circle-outer"></div>
+            </div>
+            <div class="text-sm font-extrabold tracking-widest hidden sm:block">
+                PRENDRE <span class="sa-gradient">SA</span> PLACE
+            </div>
+        </a>
+
+        <div class="flex items-center gap-4">
+            <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <div id="nav-menu" class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest items-center">
+                <a href="index.html" class="hover:text-[#9ded3a] transition-colors">Accueil</a>
+                <a href="blog.html" class="text-[#9ded3a] border-b border-[#9ded3a]">Blog</a>
+                <a href="index.html#lieu" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">S'inscrire</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Header Blog -->
+    <header class="relative pt-40 pb-20 px-6 overflow-hidden">
+        <div class="glow-circle w-[500px] h-[500px] bg-[#9ded3a] -top-20 -left-20"></div>
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">
+                Le <span class="sa-gradient">Blog</span>.
+            </h1>
+            <p class="text-white/60 text-lg md:text-xl max-w-2xl mx-auto font-medium">
+                Réflexions, coulisses et récits pour nourrir votre propre cheminement vers votre place.
+            </p>
+        </div>
+    </header>
+
+    <!-- Section Articles -->
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Filtres (Optionnels) -->
+            <div class="flex flex-wrap gap-4 mb-16 justify-center">
+                <button class="blog-tag bg-[#9ded3a] text-black">Tous les articles</button>
+                <button class="blog-tag hover:bg-[#9ded3a]/20 transition-colors">Récits</button>
+                <button class="blog-tag hover:bg-[#9ded3a]/20 transition-colors">Réflexions</button>
+                <button class="blog-tag hover:bg-[#9ded3a]/20 transition-colors">Coulisses</button>
+            </div>
+
+            <!-- Grille d'articles -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- Article 1 -->
+    <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
+        <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
+            <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+        </div>
+        <div class="p-8 flex-grow flex flex-col items-start">
+            <span class="blog-tag mb-4">Réflexion</span>
+            <h2 class="text-xl font-bold mb-4 group-hover:text-[#9ded3a] transition-colors italic">
+                Belle carrière mais sentiment de ne pas être à sa place ?
+            </h2>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                Pourquoi la réussite professionnelle ne suffit pas toujours à créer un sentiment d’alignement personnel, et ce que ce décalage intérieur peut révéler.
+            </p>
+            <a href="article-belle-carriere-alignement.html" class="text-[#9ded3a] text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/link">
+                Lire l'article 
+                <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </div>
+    </article>
+
+    <!-- À venir 1 -->
+    <article class="rounded-3xl overflow-hidden flex flex-col bg-white/[0.02] border border-white/5 min-h-[420px]">
+        <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative flex items-center justify-center">
+            <span class="blog-tag">À venir</span>
+        </div>
+        <div class="p-8 flex-grow flex items-center justify-center">
+            <p class="text-white/35 text-sm uppercase tracking-[0.2em] text-center">
+                Prochain article en préparation
+            </p>
+        </div>
+    </article>
+
+    <!-- À venir 2 -->
+    <article class="rounded-3xl overflow-hidden flex flex-col bg-white/[0.02] border border-white/5 min-h-[420px]">
+        <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative flex items-center justify-center">
+            <span class="blog-tag">À venir</span>
+        </div>
+        <div class="p-8 flex-grow flex items-center justify-center">
+            <p class="text-white/35 text-sm uppercase tracking-[0.2em] text-center">
+                Prochain article en préparation
+            </p>
+        </div>
+    </article>
+    </div>
+</div>
+</section>
+
+    <!-- Footer (Idem Accueil) -->
+    <footer class="py-12 px-6 border-t border-white/5 bg-black/20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-4">
+                <div class="logo-container opacity-50 scale-75">
+                    <div class="logo-circle-outer"></div>
+                    <div class="logo-center-wrapper">
+                        <div class="logo-spinning-core"></div>
+                        <div class="logo-dot"></div>
+                    </div>
+                    <div class="logo-circle-outer"></div>
+                </div>
+                <div>
+                    <div class="text-xl font-black tracking-tighter">PRENDRE <span class="sa-gradient">SA</span> PLACE</div>
+                    <p class="text-[10px] text-gray-500 tracking-widest uppercase">Des paroles vraies</p>
+                </div>
+            </div>
+            <div class="text-center md:text-right text-sm text-gray-400">
+                <p class="mb-1 font-bold text-white">Le Blog | Résonances</p>
+                <a href="mailto:info@prendresaplace.be" class="text-[#9ded3a] hover:underline">info@prendresaplace.be</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Animation au scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Gestion du menu mobile
+    const burger = document.getElementById('mobile-menu-button');
+    const menuListe = document.getElementById('nav-menu');
+
+    if (burger && menuListe) {
+        burger.addEventListener('click', () => {
+            menuListe.classList.toggle('hidden');
+            menuListe.classList.toggle('flex');
+            menuListe.classList.toggle('flex-col');
+            menuListe.classList.toggle('absolute');
+            menuListe.classList.toggle('top-full');
+            menuListe.classList.toggle('left-0');
+            menuListe.classList.toggle('w-full');
+            menuListe.classList.toggle('bg-[#111]/95');
+            menuListe.classList.toggle('p-6');
+            menuListe.classList.toggle('border-b');
+            menuListe.classList.toggle('border-white/10');
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    menuListe.classList.add('hidden');
+                    menuListe.classList.remove(
+                        'flex',
+                        'flex-col',
+                        'absolute',
+                        'top-full',
+                        'left-0',
+                        'w-full',
+                        'bg-[#111]/95',
+                        'p-6',
+                        'border-b',
+                        'border-white/10'
+                    );
+                }
+            });
+        });
+    }
+
+    window.addEventListener('scroll', () => {
+        if (menuListe && !menuListe.classList.contains('hidden') && window.innerWidth < 768) {
+            menuListe.classList.add('hidden');
+            menuListe.classList.remove(
+                'flex',
+                'flex-col',
+                'absolute',
+                'top-full',
+                'left-0',
+                'w-full',
+                'bg-[#111]/95',
+                'p-6',
+                'border-b',
+                'border-white/10'
+            );
+        }
+    });
+</script>
+</body>
+</html>

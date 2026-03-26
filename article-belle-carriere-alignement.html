@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belle carrière mais sentiment de ne pas être à sa place | Prendre sa place</title>
+    <meta name="description" content="Belle carrière mais sentiment de ne pas être à sa place ? Découvrez pourquoi la réussite professionnelle ne suffit pas toujours à créer un sentiment d’alignement et comment comprendre ce décalage intérieur.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --accent-green: #9ded3a;
+            --accent-blue: #3b82f6;
+            --text-gray: #e5e7eb;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-gray);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .sa-gradient {
+            background: linear-gradient(to bottom right, #9ded3a, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline;
+            line-height: 1.15;
+            padding-bottom: 0.08em;
+        }
+
+        .glow-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.14;
+            pointer-events: none;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-circle-outer {
+            width: 24px;
+            height: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .logo-center-wrapper {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            margin: 0 -8px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-spinning-core {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-green), transparent 60%);
+            animation: spin-logo 2s linear infinite;
+            filter: blur(1px);
+        }
+
+        .logo-spinning-core::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            z-index: 3;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(157, 237, 58, 0.4);
+            transform: scale(1.05);
+        }
+
+        @keyframes spin-logo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .article-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.22);
+        }
+
+        .blog-tag {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: rgba(157, 237, 58, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(157, 237, 58, 0.22);
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .article-intro {
+            margin-bottom: 2rem;
+            padding: 1.1rem 1rem 0.85rem;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+        }
+
+        .article-content h2 {
+            font-size: 1.45rem;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            padding-left: 0.95rem;
+            letter-spacing: -0.02em;
+        }
+
+        .article-content h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.12em;
+            width: 4px;
+            height: 1.15em;
+            border-radius: 999px;
+            background: linear-gradient(to bottom, var(--accent-green), var(--accent-blue));
+        }
+
+        .article-content h3 {
+            font-size: 1.08rem;
+            line-height: 1.35;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: rgba(255,255,255,0.97);
+            letter-spacing: -0.01em;
+        }
+
+        .article-content p {
+            color: rgba(229, 231, 235, 0.92);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .article-intro p {
+            font-size: 1.03rem;
+        }
+
+        .article-content strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        .article-content ul {
+            margin: 1rem 0 1.4rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .article-content li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+            color: rgba(229, 231, 235, 0.92);
+        }
+
+        .article-content li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.72em;
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--accent-green);
+            box-shadow: 0 0 10px rgba(157, 237, 58, 0.35);
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .meta-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .back-link {
+            font-size: 0.76rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.52);
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-green);
+        }
+
+        @media (min-width: 640px) {
+            .logo-circle-outer {
+                width: 28px;
+                height: 28px;
+            }
+
+            .logo-center-wrapper {
+                width: 38px;
+                height: 38px;
+                margin: 0 -10px;
+            }
+
+            .article-intro {
+                padding: 1.35rem 1.35rem 1rem;
+                border-radius: 22px;
+            }
+
+            .article-content h2 {
+                font-size: 1.7rem;
+                margin-top: 4rem;
+                margin-bottom: 1.25rem;
+                padding-left: 1rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.18rem;
+                margin-top: 2.35rem;
+                margin-bottom: 0.95rem;
+            }
+
+            .article-content p {
+                font-size: 1.04rem;
+                line-height: 1.95;
+                max-width: 66ch;
+            }
+
+            .article-intro p {
+                font-size: 1.07rem;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-md border-b border-white/5 bg-[#1a1a1a]/75">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3 sm:gap-4 group min-w-0">
+                <div class="logo-container shrink-0">
+                    <div class="logo-circle-outer"></div>
+                    <div class="logo-center-wrapper">
+                        <div class="logo-spinning-core"></div>
+                        <div class="logo-dot"></div>
+                    </div>
+                    <div class="logo-circle-outer"></div>
+                </div>
+
+                <div class="text-[11px] sm:text-sm font-extrabold tracking-[0.22em] sm:tracking-widest text-white/95 leading-none truncate hidden sm:block">
+                    PRENDRE <span class="sa-gradient">SA</span> PLACE
+                </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <div id="nav-menu" class="hidden md:flex gap-8 text-[11px] sm:text-sm font-medium uppercase tracking-[0.14em] sm:tracking-widest items-center shrink-0">
+                    <a href="index.html" class="hover:text-[#9ded3a] transition-colors">Accueil</a>
+                    <a href="blog.html" class="text-[#9ded3a] border-b border-[#9ded3a] pb-1">Blog</a>
+                    <a href="index.html#lieu" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-28 sm:pt-40 pb-10 sm:pb-16 px-4 sm:px-6">
+        <div class="glow-circle w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] bg-[#9ded3a] -top-16 -left-20"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <a href="blog.html" class="back-link inline-block">
+                ← Retour au blog
+            </a>
+
+            <div class="mt-6 sm:mt-8 mb-4 sm:mb-6">
+                <span class="blog-tag">Réflexion</span>
+            </div>
+
+            <div class="meta-row mb-6 sm:mb-8">
+                <span>Article de fond</span>
+                <span class="meta-dot"></span>
+                <span>Lecture : 6 à 8 min</span>
+            </div>
+
+            <h1 class="text-[2rem] sm:text-4xl md:text-5xl font-extrabold tracking-[-0.04em] leading-[1.06] text-white max-w-3xl text-balance">
+                Belle carrière mais sentiment de ne pas être à sa place : comprendre le décalage entre réussite professionnelle et alignement personnel.
+            </h1>
+        </div>
+    </header>
+
+    <main class="px-4 sm:px-6 pb-16 sm:pb-24">
+        <article class="article-card rounded-[24px] sm:rounded-[28px] max-w-3xl mx-auto p-5 sm:p-7 md:p-12 article-content">
+
+            <h2>Introduction – Quand la réussite professionnelle ne suffit plus</h2>
+
+            <div class="article-intro">
+                <p>Sur le papier, tout semble cohérent.</p>
+                <p>Une carrière stable. Une progression logique. Des responsabilités qui ont évolué avec le temps. Une reconnaissance qui confirme que les efforts ont porté leurs fruits.</p>
+                <p>Et pourtant, une question apparaît parfois :</p>
+                <p><strong>Pourquoi ai-je l’impression d’être à côté de ma vie alors que tout semble aller bien ?</strong></p>
+            </div>
+
+            <p>Ce sentiment peut être déroutant. Car il ne correspond pas à l’image traditionnelle du mal-être professionnel. Il n’y a pas nécessairement de conflit, ni d’échec visible, ni de problème évident.</p>
+            <p>Au contraire, la situation peut paraître enviable aux yeux des autres.</p>
+            <p>Et c’est précisément ce qui rend ce ressenti difficile à comprendre.</p>
+            <p>De plus en plus de professionnels expérimentés ressentent aujourd’hui un besoin de redonner du sens à leur travail, de questionner leur trajectoire ou de comprendre pourquoi leur réussite professionnelle ne s’accompagne pas toujours d’un sentiment d’épanouissement.</p>
+            <p>Ce questionnement ne signifie pas forcément qu’un changement radical est nécessaire.</p>
+            <p>Mais il peut indiquer qu’une évolution intérieure est en cours.</p>
+            <p>Comprendre ce qui se joue permet déjà de retrouver de la clarté et de se rapprocher progressivement d’une trajectoire plus alignée.</p>
+
+            <h2>Le sentiment d’être à côté de sa vie : définition et réalité</h2>
+
+            <p>Il existe une forme de malaise difficile à nommer.</p>
+            <p>Extérieurement, tout semble fonctionner : carrière cohérente, progression logique, reconnaissance professionnelle.</p>
+            <p>Intérieurement, une impression persiste : celle de ne pas être totalement à sa place.</p>
+            <p>Le sentiment d’être à côté de sa vie ne se manifeste pas toujours de manière spectaculaire. Il s’installe souvent progressivement, presque silencieusement.</p>
+            <p>Il ne s’agit pas forcément d’un rejet clair de son travail ni d’un désir immédiat de tout changer.</p>
+            <p>C’est souvent une sensation plus subtile :</p>
+
+            <ul>
+                <li>une perte d’élan</li>
+                <li>une motivation moins naturelle</li>
+                <li>une difficulté à se projeter avec enthousiasme</li>
+                <li>une impression de fonctionner en pilote automatique</li>
+            </ul>
+
+            <p>Beaucoup de personnes décrivent une contradiction intérieure :</p>
+            <p>« Objectivement, j’ai une bonne situation. Mais je ne me sens pas pleinement à ma place. »</p>
+
+            <h3>Un décalage entre réussite professionnelle et alignement personnel</h3>
+
+            <p>Se sentir à côté de sa vie ne signifie pas que la carrière est un échec.</p>
+            <p>Au contraire, ce sentiment apparaît souvent chez des personnes qui ont construit un parcours solide et cohérent.</p>
+            <p>Le décalage se situe entre ce que la personne fait et ce qu’elle ressent.</p>
+            <p>Avec le temps, certaines questions émergent :</p>
+
+            <ul>
+                <li>Est-ce que ce que je fais correspond encore à ce que je veux aujourd’hui ?</li>
+                <li>Est-ce que mon travail reflète ce qui compte réellement pour moi ?</li>
+                <li>Est-ce que j’avance par choix ou par habitude ?</li>
+                <li>Est-ce que cette trajectoire me rapproche de la personne que je souhaite devenir ?</li>
+            </ul>
+
+            <p>Ces interrogations traduisent souvent une quête de sens au travail ou un besoin d’alignement professionnel.</p>
+
+            <h3>Une insatisfaction discrète mais persistante</h3>
+
+            <p>Contrairement à une situation de crise évidente, le sentiment de ne pas être à sa place peut coexister avec une carrière stable.</p>
+            <p>Il peut se manifester par :</p>
+
+            <ul>
+                <li>une fatigue mentale inhabituelle</li>
+                <li>un enthousiasme plus fragile</li>
+                <li>une impression de stagnation intérieure</li>
+                <li>une difficulté à ressentir de la satisfaction durable</li>
+                <li>un sentiment de décalage avec son environnement professionnel</li>
+            </ul>
+
+            <p>Ce désalignement professionnel peut rester invisible pendant longtemps, car il n’empêche pas nécessairement d’être performant.</p>
+            <p>Mais il crée progressivement une distance entre la personne et son propre parcours.</p>
+
+            <h2>Pourquoi se sentir perdu malgré une belle carrière ?</h2>
+
+            <p>Le sentiment de perte de sens au travail ne signifie pas que les choix passés étaient mauvais.</p>
+            <p>Il indique souvent qu’une évolution personnelle a eu lieu.</p>
+            <p>Ce qui nous motivait il y a 5, 10 ou 20 ans n’est pas nécessairement ce qui nous motive aujourd’hui.</p>
+
+            <h3>Des choix construits pour répondre aux attentes extérieures</h3>
+
+            <p>De nombreuses trajectoires professionnelles sont influencées par :</p>
+
+            <ul>
+                <li>le désir de stabilité</li>
+                <li>la recherche de reconnaissance</li>
+                <li>les opportunités disponibles à un moment donné</li>
+                <li>les attentes familiales ou sociales</li>
+                <li>la volonté de prouver sa valeur</li>
+            </ul>
+
+            <p>Ces éléments ne sont pas négatifs.</p>
+            <p>Ils participent à la construction d’un parcours solide.</p>
+            <p>Mais avec le temps, certaines personnes réalisent qu’elles ont surtout appris à répondre aux attentes extérieures, parfois avant d’identifier ce qui faisait réellement sens pour elles.</p>
+
+            <h3>L’évolution personnelle change notre rapport au travail</h3>
+
+            <p>Les expériences de vie transforment les priorités.</p>
+            <p>Avec les années, certaines aspirations deviennent plus importantes :</p>
+
+            <ul>
+                <li>contribuer à quelque chose de plus grand que soi</li>
+                <li>avoir un impact concret</li>
+                <li>exercer une activité cohérente avec ses valeurs</li>
+                <li>ressentir une forme d’utilité</li>
+                <li>retrouver de l’enthousiasme</li>
+            </ul>
+
+            <p>Ce changement peut créer une tension intérieure lorsque la trajectoire professionnelle ne reflète plus totalement cette évolution.</p>
+
+            <h3>La réussite ne garantit pas le sentiment d’accomplissement</h3>
+
+            <p>La réussite professionnelle repose souvent sur des critères visibles :</p>
+
+            <ul>
+                <li>le niveau de responsabilité</li>
+                <li>le salaire</li>
+                <li>le statut</li>
+                <li>la progression hiérarchique</li>
+                <li>la reconnaissance externe</li>
+            </ul>
+
+            <p>L’accomplissement personnel repose sur des critères plus intérieurs :</p>
+
+            <ul>
+                <li>le sentiment d’être à sa place</li>
+                <li>la cohérence avec ses valeurs</li>
+                <li>la sensation d’avancer dans une direction qui a du sens</li>
+                <li>la motivation durable</li>
+                <li>l’impression de contribuer de manière juste</li>
+            </ul>
+
+            <p>Il est possible de réussir selon les critères externes tout en ressentant un manque d’alignement intérieur.</p>
+
+            <h2>Les signaux qui indiquent un besoin d’alignement professionnel</h2>
+
+            <p>Certains signaux peuvent indiquer qu’un besoin d’évolution est présent.</p>
+            <p>Ces signaux ne signifient pas forcément qu’un changement radical est nécessaire.</p>
+            <p>Ils indiquent souvent qu’un questionnement mérite d’être exploré.</p>
+
+            <h3>Une motivation plus difficile à mobiliser</h3>
+
+            <p>Ce qui semblait stimulant auparavant peut demander plus d’effort aujourd’hui.</p>
+            <p>La motivation devient moins spontanée.</p>
+            <p>Les projets suscitent moins d’enthousiasme.</p>
+            <p>Certaines tâches paraissent plus lourdes qu’avant.</p>
+
+            <h3>Une impression de décalage avec son environnement</h3>
+
+            <p>Il peut apparaître une sensation de distance avec :</p>
+
+            <ul>
+                <li>la culture de l’entreprise</li>
+                <li>les objectifs poursuivis</li>
+                <li>les discussions internes</li>
+                <li>la manière dont les décisions sont prises</li>
+                <li>les priorités définies</li>
+            </ul>
+
+            <p>Ce décalage n’est pas toujours visible pour l’entourage.</p>
+            <p>Mais il peut créer une impression de ne plus totalement se reconnaître dans son environnement professionnel.</p>
+
+            <h3>Le sentiment de ne plus apprendre ou évoluer</h3>
+
+            <p>L’évolution ne concerne pas uniquement les promotions.</p>
+            <p>Elle concerne aussi :</p>
+
+            <ul>
+                <li>l’apprentissage</li>
+                <li>la stimulation intellectuelle</li>
+                <li>le développement personnel</li>
+                <li>la découverte de nouvelles perspectives</li>
+            </ul>
+
+            <p>Lorsque ces éléments disparaissent, une forme de stagnation peut apparaître.</p>
+
+            <h2>Le doute comme étape normale d’évolution</h2>
+
+            <p>Le doute est souvent perçu comme un signal négatif.</p>
+            <p>Pourtant, il peut indiquer qu’une transformation est en cours.</p>
+            <p>Remettre en question son parcours peut être une manière d’affiner sa direction.</p>
+
+            <h3>Le doute comme signe de lucidité</h3>
+
+            <p>S’interroger sur sa trajectoire demande une certaine honnêteté intellectuelle.</p>
+            <p>Cela implique de reconnaître que les réponses d’hier ne correspondent plus nécessairement aux questions d’aujourd’hui.</p>
+            <p>Cette lucidité peut être inconfortable, mais elle ouvre la possibilité d’un repositionnement plus aligné.</p>
+
+            <h3>Une étape fréquente dans les parcours professionnels</h3>
+
+            <p>De nombreuses personnes traversent des périodes de questionnement à différents moments :</p>
+
+            <ul>
+                <li>après plusieurs années d’expérience</li>
+                <li>lors d’une prise de nouvelles responsabilités</li>
+                <li>après un changement de contexte personnel</li>
+                <li>lors d’une phase de transition</li>
+                <li>après l’atteinte d’un objectif important</li>
+            </ul>
+
+            <p>Ces moments invitent à réévaluer la direction prise.</p>
+
+            <h2>Redéfinir ce que signifie réellement “être à sa place”</h2>
+
+            <p>Être à sa place ne signifie pas nécessairement trouver une situation parfaite.</p>
+            <p>Il s’agit plutôt de se rapprocher d’un équilibre entre :</p>
+
+            <ul>
+                <li>ce que l’on sait faire</li>
+                <li>ce que l’on souhaite développer</li>
+                <li>ce qui a du sens pour soi</li>
+                <li>la manière dont on souhaite contribuer</li>
+            </ul>
+
+            <h3>Se reconnecter à ses critères personnels</h3>
+
+            <p>Certaines questions peuvent aider à clarifier ce qui compte réellement :</p>
+
+            <ul>
+                <li>Quelles situations me donnent de l’énergie ?</li>
+                <li>Dans quels contextes ai-je le sentiment d’être utile ?</li>
+                <li>Quelles activités me semblent naturelles ?</li>
+                <li>Quels types de projets me motivent réellement ?</li>
+                <li>Quel environnement me permet de m’exprimer pleinement ?</li>
+            </ul>
+
+            <p>Ces réflexions permettent d’identifier des repères plus personnels.</p>
+
+            <h3>Accepter qu’une trajectoire évolue</h3>
+
+            <p>Une carrière n’est pas une ligne droite.</p>
+            <p>Les aspirations évoluent.</p>
+            <p>Les priorités changent.</p>
+            <p>Les expériences transforment notre regard.</p>
+            <p>Reconnaître cette évolution permet d’éviter de rester attaché à une direction qui ne correspond plus à la personne que l’on devient.</p>
+
+            <h2>Conclusion – Se rapprocher progressivement de sa place</h2>
+
+            <p>Se sentir à côté de sa vie malgré une belle carrière n’est pas une contradiction rare.</p>
+            <p>C’est souvent le signe qu’une évolution intérieure est en cours.</p>
+            <p>Ce ressenti peut devenir une opportunité de mieux comprendre :</p>
+
+            <ul>
+                <li>ce qui compte réellement</li>
+                <li>ce qui a changé avec le temps</li>
+                <li>ce qui mérite d’être ajusté</li>
+                <li>ce qui peut être transformé progressivement</li>
+            </ul>
+
+            <p>Il ne s’agit pas nécessairement de tout remettre en question.</p>
+            <p>Parfois, de légers ajustements permettent déjà de retrouver un sentiment d’alignement.</p>
+            <p>Certaines prises de conscience arrivent en lisant. D’autres en écoutant des récits vécus.</p>
+            <p>Prendre sa place propose des moments où des personnes partagent une expérience de bascule qui a transformé leur trajectoire.</p>
+            <p>Parfois, entendre un parcours réel permet de clarifier le sien.</p>
+
+        </article>
+    </main>
+
+    <script>
+        const burger = document.getElementById('mobile-menu-button');
+        const menuListe = document.getElementById('nav-menu');
+
+        if (burger && menuListe) {
+            burger.addEventListener('click', () => {
+                menuListe.classList.toggle('hidden');
+                menuListe.classList.toggle('flex');
+                menuListe.classList.toggle('flex-col');
+                menuListe.classList.toggle('absolute');
+                menuListe.classList.toggle('top-full');
+                menuListe.classList.toggle('left-0');
+                menuListe.classList.toggle('w-full');
+                menuListe.classList.toggle('bg-[#111]/95');
+                menuListe.classList.toggle('p-6');
+                menuListe.classList.toggle('border-b');
+                menuListe.classList.toggle('border-white/10');
+            });
+
+            document.querySelectorAll('#nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        menuListe.classList.add('hidden');
+                        menuListe.classList.remove(
+                            'flex',
+                            'flex-col',
+                            'absolute',
+                            'top-full',
+                            'left-0',
+                            'w-full',
+                            'bg-[#111]/95',
+                            'p-6',
+                            'border-b',
+                            'border-white/10'
+                        );
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
+                    menuListe.classList.add('hidden');
+                    menuListe.classList.remove(
+                        'flex',
+                        'flex-col',
+                        'absolute',
+                        'top-full',
+                        'left-0',
+                        'w-full',
+                        'bg-[#111]/95',
+                        'p-6',
+                        'border-b',
+                        'border-white/10'
+                    );
+                }
+            });
+        }
+    </script>
+</body>
+</html>
