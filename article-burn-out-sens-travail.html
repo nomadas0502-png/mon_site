@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pourquoi le burn-out touche souvent ceux qui semblaient pourtant à leur place ? | Prendre sa place</title>
+    <meta name="description" content="Pourquoi le burn-out touche aussi des personnes compétentes et engagées ? Comprendre le décalage intérieur qui peut mener à l’épuisement professionnel en Belgique.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --accent-green: #9ded3a;
+            --accent-blue: #3b82f6;
+            --text-gray: #e5e7eb;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-gray);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .sa-gradient {
+            background: linear-gradient(to bottom right, #9ded3a, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline;
+            line-height: 1.15;
+            padding-bottom: 0.08em;
+        }
+
+        .glow-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.14;
+            pointer-events: none;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-circle-outer {
+            width: 24px;
+            height: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .logo-center-wrapper {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            margin: 0 -8px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-spinning-core {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-green), transparent 60%);
+            animation: spin-logo 2s linear infinite;
+            filter: blur(1px);
+        }
+
+        .logo-spinning-core::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            z-index: 3;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(157, 237, 58, 0.4);
+            transform: scale(1.05);
+        }
+
+        @keyframes spin-logo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .article-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.22);
+        }
+
+        .blog-tag {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: rgba(157, 237, 58, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(157, 237, 58, 0.22);
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .article-intro {
+            margin-bottom: 2rem;
+            padding: 1.1rem 1rem 0.85rem;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+        }
+
+        .article-content h2 {
+            font-size: 1.45rem;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            padding-left: 0.95rem;
+            letter-spacing: -0.02em;
+        }
+
+        .article-content h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.12em;
+            width: 4px;
+            height: 1.15em;
+            border-radius: 999px;
+            background: linear-gradient(to bottom, var(--accent-green), var(--accent-blue));
+        }
+
+        .article-content h3 {
+            font-size: 1.08rem;
+            line-height: 1.35;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: rgba(255,255,255,0.97);
+            letter-spacing: -0.01em;
+        }
+
+        .article-content p {
+            color: rgba(229, 231, 235, 0.92);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .article-intro p {
+            font-size: 1.03rem;
+        }
+
+        .article-content strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        .article-content ul {
+            margin: 1rem 0 1.4rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .article-content li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+            color: rgba(229, 231, 235, 0.92);
+        }
+
+        .article-content li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.72em;
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--accent-green);
+            box-shadow: 0 0 10px rgba(157, 237, 58, 0.35);
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .meta-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .back-link {
+            font-size: 0.76rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.52);
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-green);
+        }
+
+        .sources-block {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sources-block h2 {
+            margin-top: 0 !important;
+        }
+
+        .sources-block ol {
+            margin: 0.75rem 0 0 1.2rem;
+            padding: 0;
+            list-style: decimal;
+        }
+
+        .sources-block li {
+            margin-bottom: 0.85rem;
+            line-height: 1.7;
+            color: rgba(229, 231, 235, 0.82);
+            padding-left: 0.2rem;
+        }
+
+        .sources-block li::before {
+            content: none !important;
+        }
+
+        .sources-block a {
+            color: #9ded3a;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .sources-block a:hover {
+            text-decoration: underline;
+        }
+
+        .source-note {
+            font-size: 0.75em;
+            vertical-align: super;
+            color: var(--accent-green);
+            font-weight: 700;
+            margin-left: 1px;
+        }
+
+        @media (min-width: 640px) {
+            .logo-circle-outer {
+                width: 28px;
+                height: 28px;
+            }
+
+            .logo-center-wrapper {
+                width: 38px;
+                height: 38px;
+                margin: 0 -10px;
+            }
+
+            .article-intro {
+                padding: 1.35rem 1.35rem 1rem;
+                border-radius: 22px;
+            }
+
+            .article-content h2 {
+                font-size: 1.7rem;
+                margin-top: 4rem;
+                margin-bottom: 1.25rem;
+                padding-left: 1rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.18rem;
+                margin-top: 2.35rem;
+                margin-bottom: 0.95rem;
+            }
+
+            .article-content p {
+                font-size: 1.04rem;
+                line-height: 1.95;
+                max-width: 66ch;
+            }
+
+            .article-intro p {
+                font-size: 1.07rem;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-md border-b border-white/5 bg-[#1a1a1a]/75">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3 sm:gap-4 group min-w-0">
+                <div class="logo-container shrink-0">
+                    <div class="logo-circle-outer"></div>
+                    <div class="logo-center-wrapper">
+                        <div class="logo-spinning-core"></div>
+                        <div class="logo-dot"></div>
+                    </div>
+                    <div class="logo-circle-outer"></div>
+                </div>
+
+                <div class="text-[11px] sm:text-sm font-extrabold tracking-[0.22em] sm:tracking-widest text-white/95 leading-none truncate hidden sm:block">
+                    PRENDRE <span class="sa-gradient">SA</span> PLACE
+                </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <div id="nav-menu" class="hidden md:flex gap-8 text-[11px] sm:text-sm font-medium uppercase tracking-[0.14em] sm:tracking-widest items-center shrink-0">
+                    <a href="index.html" class="hover:text-[#9ded3a] transition-colors">Accueil</a>
+                    <a href="blog.html" class="text-[#9ded3a] border-b border-[#9ded3a] pb-1">Blog</a>
+                    <a href="index.html#lieu" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-28 sm:pt-40 pb-10 sm:pb-16 px-4 sm:px-6">
+        <div class="glow-circle w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] bg-[#9ded3a] -top-16 -left-20"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <a href="blog.html" class="back-link inline-block">
+                ← Retour au blog
+            </a>
+
+            <div class="mt-6 sm:mt-8 mb-4 sm:mb-6">
+                <span class="blog-tag">Réflexion</span>
+            </div>
+
+            <div class="meta-row mb-6 sm:mb-8">
+                <span>Article de fond</span>
+                <span class="meta-dot"></span>
+                <span>Lecture : 6 à 8 min</span>
+            </div>
+
+            <h1 class="text-[2rem] sm:text-4xl md:text-5xl font-extrabold tracking-[-0.04em] leading-[1.06] text-white max-w-3xl text-balance">
+                Pourquoi le burn-out touche souvent ceux qui semblaient pourtant à leur place ?
+            </h1>
+        </div>
+    </header>
+
+    <main class="px-4 sm:px-6 pb-16 sm:pb-24">
+        <article class="article-card rounded-[24px] sm:rounded-[28px] max-w-3xl mx-auto p-5 sm:p-7 md:p-12 article-content">
+
+            <div class="article-intro">
+                <p><strong>Pourquoi le burn-out touche aussi des personnes compétentes et engagées ?</strong> Comprendre le décalage intérieur qui peut mener à l’épuisement professionnel en Belgique.</p>
+            </div>
+
+            <h2>Et si l’épuisement n’était pas seulement une question de charge… mais de décalage intérieur ?</h2>
+
+            <p>Certaines trajectoires professionnelles paraissent cohérentes à tous les niveaux. L’évolution est progressive, les responsabilités augmentent et la reconnaissance est bien présente. Extérieurement, rien ne semble indiquer qu’un déséquilibre est en train d’apparaître.</p>
+
+            <p>Pourtant, intérieurement, quelque chose commence parfois à se fragiliser. L’énergie devient plus difficile à mobiliser, la motivation demande davantage d’efforts, et ce qui paraissait naturel auparavant demande une implication plus importante. Ce qui déstabilise souvent, c’est précisément l’absence de cause évidente : tout semble aller bien, mais l’élan n’est plus le même.</p>
+
+            <p>Le burn-out ne survient pas uniquement dans des contextes manifestement toxiques ou chaotiques. Il peut apparaître dans des parcours solides, chez des personnes compétentes et engagées, qui continuent à assumer leurs responsabilités tout en ressentant progressivement une forme de décalage intérieur.</p>
+
+            <h2>Le burn-out n’est plus un phénomène isolé</h2>
+
+            <p>Le burn-out concerne aujourd’hui un nombre croissant de professionnels en Belgique, ce qui montre qu’il ne s’agit plus d’une situation marginale. Selon une étude menée auprès de près de 35 000 travailleurs, environ 1 travailleur sur 6 présente un risque élevé de burn-out<span class="source-note">1</span>, et ce risque a augmenté d’environ 40 % en dix ans<span class="source-note">1</span>.</p>
+
+            <p>Les incapacités de travail liées au burn-out ont par ailleurs presque doublé entre 2018 et 2024 (+94 %)<span class="source-note">2</span>, confirmant l’ampleur du phénomène. Aujourd’hui, plus d’un tiers des absences de longue durée en Belgique sont liées à des troubles psychosociaux, dont le burn-out et la dépression<span class="source-note">3</span>.</p>
+
+            <p>Ces données rappellent que l’épuisement professionnel ne concerne pas uniquement certains environnements très exigeants. Il touche également des profils investis, qui ont construit une trajectoire cohérente, mais qui ressentent progressivement un écart entre ce qu’ils font et ce qui les nourrit réellement.</p>
+
+            <h2>Pourquoi le burn-out ne s’explique pas uniquement par une surcharge de travail</h2>
+
+            <p>Le burn-out est souvent associé à une pression excessive ou à un volume de travail trop important. Cette dimension existe, mais elle ne suffit pas toujours à expliquer pourquoi certaines personnes s’épuisent plus profondément que d’autres dans des contextes comparables.</p>
+
+            <p>Deux professionnels peuvent faire face à des contraintes similaires tout en vivant des expériences très différentes. Ce qui fragilise durablement n’est pas uniquement l’intensité de l’effort, mais la difficulté à relier cet effort à quelque chose qui fait encore sens. Lorsque l’on ne perçoit plus clairement l’utilité de ce que l’on fait ou que l’on ne se reconnaît plus totalement dans son rôle, l’énergie nécessaire pour continuer à s’impliquer devient plus importante.</p>
+
+            <p>Avec le temps, cet écart peut créer une forme d’usure intérieure progressive. L’investissement reste présent, mais il demande davantage de ressources qu’auparavant, ce qui peut réduire la capacité de récupération sur la durée.</p>
+
+            <h2>Pourquoi les profils engagés sont particulièrement concernés</h2>
+
+            <p>Contrairement à certaines idées reçues, le burn-out touche fréquemment des personnes investies dans leur travail. Ce sont souvent des profils qui ont développé un sens élevé des responsabilités, qui souhaitent maintenir un niveau d’exigence élevé et qui accordent de l’importance à la qualité de leur contribution.</p>
+
+            <p>Ces professionnels ont souvent appris à s’adapter à des environnements complexes. Ils savent absorber une charge importante, trouver des solutions et maintenir un niveau de performance élevé, même dans des contextes exigeants. Cette capacité d’adaptation constitue une force, mais elle peut également conduire à repousser certains signaux internes.</p>
+
+            <p>Avec le temps, l’habitude de tenir malgré la fatigue peut réduire la capacité à identifier le moment où l’équilibre devient plus fragile. Ce qui était initialement une période intense peut progressivement devenir une tension plus durable.</p>
+
+            <h2>Les signaux faibles qui précèdent souvent l’épuisement</h2>
+
+            <p>Le burn-out ne commence généralement pas au moment où l’on ne parvient plus à travailler. Il s’installe souvent de manière progressive, à travers des signaux discrets qui peuvent passer inaperçus pendant un certain temps.</p>
+
+            <p>Une fatigue persistante malgré le repos, une concentration plus difficile à maintenir ou une sensation de saturation mentale plus rapide font partie des manifestations fréquentes. Certaines personnes décrivent également une diminution de l’enthousiasme pour des sujets qui étaient auparavant stimulants, ou une impression de devoir fournir plus d’efforts pour maintenir le même niveau d’implication.</p>
+
+            <p>Une forme de distance émotionnelle peut également apparaître, donnant le sentiment d’un engagement plus mécanique. Ce décalage peut être difficile à exprimer, car il ne correspond pas toujours à un problème visible extérieurement, mais il peut progressivement affecter la relation que l’on entretient avec son travail.</p>
+
+            <h2>Quand la cohérence du parcours ne suffit plus à créer un sentiment d’alignement</h2>
+
+            <p>De nombreuses trajectoires professionnelles sont construites avec logique et cohérence. Les choix d’études, les évolutions de poste et les responsabilités successives forment un parcours structuré qui semble correspondre aux attentes initiales.</p>
+
+            <p>Pourtant, il arrive qu’un questionnement apparaisse malgré cette cohérence. Il ne s’agit pas nécessairement d’une envie de rupture radicale, mais plutôt d’une interrogation plus subtile sur l’évolution de ses motivations ou de ses priorités.</p>
+
+            <p>Ce qui était stimulant à un moment donné peut perdre progressivement de son évidence, en particulier lorsque l’environnement évolue ou que la perception de ce qui compte réellement change. Lorsque ces évolutions ne sont pas prises en compte, un écart peut se créer entre la trajectoire extérieure et l’expérience intérieure, ce qui peut progressivement peser sur l’énergie disponible.</p>
+
+            <h2>Repenser le burn-out comme un signal plutôt que comme une faiblesse</h2>
+
+            <p>Le burn-out est souvent vécu comme une rupture difficile, car il remet en question certains repères importants, notamment la perception de sa propre solidité. Pour des personnes habituées à gérer des situations complexes, cette expérience peut être particulièrement déstabilisante.</p>
+
+            <p>Cependant, certaines personnes décrivent également cette période comme un moment de clarification. Non pas parce que l’expérience est simple, mais parce qu’elle met en lumière certaines tensions qui étaient devenues invisibles avec le temps.</p>
+
+            <p>Ce type de moment peut ouvrir un espace de réflexion différent, permettant de reconsidérer ce qui mérite encore un engagement durable et ce qui demande peut-être à évoluer. Il ne s’agit pas nécessairement de prendre des décisions immédiates, mais plutôt de réintroduire une forme d’écoute intérieure plus attentive.</p>
+
+            <h2>Retrouver une relation plus juste à son engagement professionnel</h2>
+
+            <p>Sortir d’un burn-out ne consiste pas uniquement à réduire la pression ou à modifier son rythme de travail. Cela peut également impliquer de redéfinir certains repères, notamment la manière dont on mesure sa contribution ou la place que l’on accorde à son rôle professionnel dans son identité.</p>
+
+            <p>Certaines évolutions peuvent être visibles, comme un changement d’environnement ou d’organisation. D’autres sont plus discrètes, comme l’ajustement des attentes envers soi-même ou une clarification de ce qui mérite réellement d’être investi dans la durée.</p>
+
+            <p>Il arrive que la trajectoire reste globalement cohérente, mais que la manière de l’habiter évolue. Cette évolution peut permettre de retrouver une forme d’engagement plus durable, mieux alignée avec les priorités actuelles.</p>
+
+            <h2>Conclusion – certains moments d’épuisement révèlent aussi un besoin d’évolution</h2>
+
+            <p>Le burn-out confronte souvent à une question essentielle : qu’est-ce qui mérite réellement d’être porté dans la durée ? Certaines prises de conscience apparaissent progressivement, tandis que d’autres émergent lors de périodes plus exigeantes.</p>
+
+            <p>Ces moments peuvent fragiliser certains repères, mais ils peuvent également permettre de clarifier ce qui compte réellement et ce qui a évolué avec le temps. Ils ouvrent parfois un espace de réflexion plus honnête sur la manière dont on souhaite continuer à construire son parcours.</p>
+
+            <p>Certaines prises de conscience arrivent en lisant. D’autres en écoutant des récits vécus.</p>
+
+            <p>Prendre sa place propose des moments où des personnes partagent une expérience de bascule qui a transformé leur trajectoire. Parfois, entendre un parcours réel permet de clarifier le sien.</p>
+
+            <div class="sources-block">
+                <h2>Sources</h2>
+                <ol>
+                    <li>
+                        <a href="https://www.lespecialiste.be/fr/actualites/la-tendance-au-burn-out-reste-a-la-hausse-chez-les-travailleurs-belges.html" target="_blank" rel="noopener noreferrer">
+                            https://www.lespecialiste.be/fr/actualites/la-tendance-au-burn-out-reste-a-la-hausse-chez-les-travailleurs-belges.html
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mloz.be/fr/news/nouvelles-incapacites-de-travail-le-burn-out-double-entre-2018-et-2024" target="_blank" rel="noopener noreferrer">
+                            https://www.mloz.be/fr/news/nouvelles-incapacites-de-travail-le-burn-out-double-entre-2018-et-2024
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.forbes.be/fr/un-burn-out-pas-si-professionnel/" target="_blank" rel="noopener noreferrer">
+                            https://www.forbes.be/fr/un-burn-out-pas-si-professionnel/
+                        </a>
+                    </li>
+                </ol>
+            </div>
+
+        </article>
+    </main>
+
+    <script>
+        const burger = document.getElementById('mobile-menu-button');
+        const menuListe = document.getElementById('nav-menu');
+
+        if (burger && menuListe) {
+            burger.addEventListener('click', () => {
+                menuListe.classList.toggle('hidden');
+                menuListe.classList.toggle('flex');
+                menuListe.classList.toggle('flex-col');
+                menuListe.classList.toggle('absolute');
+                menuListe.classList.toggle('top-full');
+                menuListe.classList.toggle('left-0');
+                menuListe.classList.toggle('w-full');
+                menuListe.classList.toggle('bg-[#111]/95');
+                menuListe.classList.toggle('p-6');
+                menuListe.classList.toggle('border-b');
+                menuListe.classList.toggle('border-white/10');
+            });
+
+            document.querySelectorAll('#nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        menuListe.classList.add('hidden');
+                        menuListe.classList.remove(
+                            'flex',
+                            'flex-col',
+                            'absolute',
+                            'top-full',
+                            'left-0',
+                            'w-full',
+                            'bg-[#111]/95',
+                            'p-6',
+                            'border-b',
+                            'border-white/10'
+                        );
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
+                    menuListe.classList.add('hidden');
+                    menuListe.classList.remove(
+                        'flex',
+                        'flex-col',
+                        'absolute',
+                        'top-full',
+                        'left-0',
+                        'w-full',
+                        'bg-[#111]/95',
+                        'p-6',
+                        'border-b',
+                        'border-white/10'
+                    );
+                }
+            });
+        }
+    </script>
+</body>
+</html>

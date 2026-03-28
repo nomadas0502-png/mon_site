@@ -67,7 +67,6 @@
             transform: scale(1.05);
         }
 
-        /* --- LOGO DYNAMIQUE --- */
         .logo-container {
             display: flex;
             align-items: center;
@@ -125,11 +124,6 @@
             to { transform: rotate(360deg); }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         section {
             opacity: 0;
             transform: translateY(30px);
@@ -158,36 +152,36 @@
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 px-6 py-4 backdrop-blur-md border-b border-white/5 bg-[#1a1a1a]/95">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-4">
-            <div class="logo-container">
-                <div class="logo-circle-outer"></div>
-                <div class="logo-center-wrapper">
-                    <div class="logo-spinning-core"></div>
-                    <div class="logo-dot"></div>
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4">
+                <div class="logo-container">
+                    <div class="logo-circle-outer"></div>
+                    <div class="logo-center-wrapper">
+                        <div class="logo-spinning-core"></div>
+                        <div class="logo-dot"></div>
+                    </div>
+                    <div class="logo-circle-outer"></div>
                 </div>
-                <div class="logo-circle-outer"></div>
-            </div>
-            <div class="text-sm font-extrabold tracking-widest hidden sm:block">
-                PRENDRE <span class="sa-gradient">SA</span> PLACE
-            </div>
-        </a>
+                <div class="text-sm font-extrabold tracking-widest hidden sm:block">
+                    PRENDRE <span class="sa-gradient">SA</span> PLACE
+                </div>
+            </a>
 
-        <div class="flex items-center gap-4">
-            <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
 
-            <div id="nav-menu" class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest items-center">
-                <a href="index.html" class="hover:text-[#9ded3a] transition-colors">Accueil</a>
-                <a href="blog.html" class="text-[#9ded3a] border-b border-[#9ded3a]">Blog</a>
-                <a href="index.html#lieu" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">S'inscrire</a>
+                <div id="nav-menu" class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest items-center">
+                    <a href="index.html" class="hover:text-[#9ded3a] transition-colors">Accueil</a>
+                    <a href="blog.html" class="text-[#9ded3a] border-b border-[#9ded3a]">Blog</a>
+                    <a href="index.html#lieu" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">S'inscrire</a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- Header Blog -->
     <header class="relative pt-40 pb-20 px-6 overflow-hidden">
@@ -206,7 +200,7 @@
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto">
             
-            <!-- Filtres (Optionnels) -->
+            <!-- Filtres -->
             <div class="flex flex-wrap gap-4 mb-16 justify-center">
                 <button class="blog-tag bg-[#9ded3a] text-black">Tous les articles</button>
                 <button class="blog-tag hover:bg-[#9ded3a]/20 transition-colors">Récits</button>
@@ -217,70 +211,89 @@
             <!-- Grille d'articles -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-    <!-- Article 1 -->
-    <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
-        <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
-            <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+                <!-- Article 1 -->
+                <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col items-start">
+                        <span class="blog-tag mb-4">Réflexion</span>
+                        <h2 class="text-xl font-bold mb-4 group-hover:text-[#9ded3a] transition-colors italic">
+                            Belle carrière mais sentiment de ne pas être à sa place ?
+                        </h2>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Pourquoi la réussite professionnelle ne suffit pas toujours à créer un sentiment d’alignement personnel, et ce que ce décalage intérieur peut révéler.
+                        </p>
+                        <a href="article-belle-carriere-alignement.html" class="text-[#9ded3a] text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/link">
+                            Lire l'article
+                            <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col items-start">
+                        <span class="blog-tag mb-4">Réflexion</span>
+                        <h2 class="text-xl font-bold mb-4 group-hover:text-[#9ded3a] transition-colors italic">
+                            Changer de direction à 24 ans… erreur ou lucidité ?
+                        </h2>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Se tromper de voie à 24 ans n’est pas un échec. Réaliser tôt qu’un parcours ne vous correspond pas peut devenir un avantage stratégique.
+                        </p>
+                        <a href="article-24-ans-etudiants.html" class="text-[#9ded3a] text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/link">
+                            Lire l'article
+                            <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1473830394358-91588751b241?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"></div>
+                    </div>
+                    <div class="p-8 flex-grow flex flex-col items-start">
+                        <span class="blog-tag mb-4">Réflexion</span>
+                        <h2 class="text-xl font-bold mb-4 group-hover:text-[#9ded3a] transition-colors italic">
+                            Pourquoi le burn-out touche souvent ceux qui semblaient pourtant à leur place ?
+                        </h2>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                            Comprendre pourquoi l’épuisement professionnel peut aussi toucher des personnes compétentes, engagées et en apparence parfaitement à leur place.
+                        </p>
+                        <a href="article-burn-out-sens-travail.html" class="text-[#9ded3a] text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/link">
+                            Lire l'article
+                            <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- À venir -->
+                <article class="rounded-3xl overflow-hidden flex flex-col bg-white/[0.02] border border-white/5 min-h-[420px]">
+                    <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative flex items-center justify-center">
+                        <span class="blog-tag">À venir</span>
+                    </div>
+                    <div class="p-8 flex-grow flex items-center justify-center">
+                        <p class="text-white/35 text-sm uppercase tracking-[0.2em] text-center">
+                            Prochain article en préparation
+                        </p>
+                    </div>
+                </article>
+
+            </div>
         </div>
-        <div class="p-8 flex-grow flex flex-col items-start">
-            <span class="blog-tag mb-4">Réflexion</span>
-            <h2 class="text-xl font-bold mb-4 group-hover:text-[#9ded3a] transition-colors italic">
-                Belle carrière mais sentiment de ne pas être à sa place ?
-            </h2>
-            <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-                Pourquoi la réussite professionnelle ne suffit pas toujours à créer un sentiment d’alignement personnel, et ce que ce décalage intérieur peut révéler.
-            </p>
-            <a href="article-belle-carriere-alignement.html" class="text-[#9ded3a] text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/link">
-                Lire l'article 
-                <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </a>
-        </div>
-    </article>
+    </section>
 
-    <!-- Article 2 -->
-<article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
-    <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
-        <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
-    </div>
-
-    <div class="p-8 flex-grow flex flex-col items-start">
-        <span class="blog-tag mb-4">Réflexion</span>
-
-        <h2 class="text-xl font-bold mb-4 group-hover:text-[#9ded3a] transition-colors italic">
-            Changer de direction à 24 ans… erreur ou lucidité ?
-        </h2>
-
-        <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
-            Se tromper de voie à 24 ans n’est pas un échec. Réaliser tôt qu’un parcours ne vous correspond pas peut devenir un avantage stratégique.
-        </p>
-
-        <a href="article-24-ans-etudiants.html" class="text-[#9ded3a] text-xs font-bold uppercase tracking-widest flex items-center gap-2 group/link">
-            Lire l'article
-            <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-        </a>
-    </div>
-</article>
-
-    <!-- À venir 2 -->
-    <article class="rounded-3xl overflow-hidden flex flex-col bg-white/[0.02] border border-white/5 min-h-[420px]">
-        <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative flex items-center justify-center">
-            <span class="blog-tag">À venir</span>
-        </div>
-        <div class="p-8 flex-grow flex items-center justify-center">
-            <p class="text-white/35 text-sm uppercase tracking-[0.2em] text-center">
-                Prochain article en préparation
-            </p>
-        </div>
-    </article>
-    </div>
-</div>
-</section>
-
-    <!-- Footer (Idem Accueil) -->
+    <!-- Footer -->
     <footer class="py-12 px-6 border-t border-white/5 bg-black/20">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex items-center gap-4">
@@ -305,76 +318,76 @@
     </footer>
 
     <script>
-    // Animation au scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-
-    // Gestion du menu mobile
-    const burger = document.getElementById('mobile-menu-button');
-    const menuListe = document.getElementById('nav-menu');
-
-    if (burger && menuListe) {
-        burger.addEventListener('click', () => {
-            menuListe.classList.toggle('hidden');
-            menuListe.classList.toggle('flex');
-            menuListe.classList.toggle('flex-col');
-            menuListe.classList.toggle('absolute');
-            menuListe.classList.toggle('top-full');
-            menuListe.classList.toggle('left-0');
-            menuListe.classList.toggle('w-full');
-            menuListe.classList.toggle('bg-[#111]/95');
-            menuListe.classList.toggle('p-6');
-            menuListe.classList.toggle('border-b');
-            menuListe.classList.toggle('border-white/10');
-        });
-
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 768) {
-                    menuListe.classList.add('hidden');
-                    menuListe.classList.remove(
-                        'flex',
-                        'flex-col',
-                        'absolute',
-                        'top-full',
-                        'left-0',
-                        'w-full',
-                        'bg-[#111]/95',
-                        'p-6',
-                        'border-b',
-                        'border-white/10'
-                    );
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        });
-    }
+        }, { threshold: 0.1 });
 
-    window.addEventListener('scroll', () => {
-        if (menuListe && !menuListe.classList.contains('hidden') && window.innerWidth < 768) {
-            menuListe.classList.add('hidden');
-            menuListe.classList.remove(
-                'flex',
-                'flex-col',
-                'absolute',
-                'top-full',
-                'left-0',
-                'w-full',
-                'bg-[#111]/95',
-                'p-6',
-                'border-b',
-                'border-white/10'
-            );
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Gestion du menu mobile
+        const burger = document.getElementById('mobile-menu-button');
+        const menuListe = document.getElementById('nav-menu');
+
+        if (burger && menuListe) {
+            burger.addEventListener('click', () => {
+                menuListe.classList.toggle('hidden');
+                menuListe.classList.toggle('flex');
+                menuListe.classList.toggle('flex-col');
+                menuListe.classList.toggle('absolute');
+                menuListe.classList.toggle('top-full');
+                menuListe.classList.toggle('left-0');
+                menuListe.classList.toggle('w-full');
+                menuListe.classList.toggle('bg-[#111]/95');
+                menuListe.classList.toggle('p-6');
+                menuListe.classList.toggle('border-b');
+                menuListe.classList.toggle('border-white/10');
+            });
+
+            document.querySelectorAll('#nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        menuListe.classList.add('hidden');
+                        menuListe.classList.remove(
+                            'flex',
+                            'flex-col',
+                            'absolute',
+                            'top-full',
+                            'left-0',
+                            'w-full',
+                            'bg-[#111]/95',
+                            'p-6',
+                            'border-b',
+                            'border-white/10'
+                        );
+                    }
+                });
+            });
         }
-    });
-</script>
+
+        window.addEventListener('scroll', () => {
+            if (menuListe && !menuListe.classList.contains('hidden') && window.innerWidth < 768) {
+                menuListe.classList.add('hidden');
+                menuListe.classList.remove(
+                    'flex',
+                    'flex-col',
+                    'absolute',
+                    'top-full',
+                    'left-0',
+                    'w-full',
+                    'bg-[#111]/95',
+                    'p-6',
+                    'border-b',
+                    'border-white/10'
+                );
+            }
+        });
+    </script>
 </body>
 </html>
