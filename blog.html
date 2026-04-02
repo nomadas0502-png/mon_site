@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5WVVF44VEB');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Prendre sa place - Récits et Résonances</title>
@@ -149,8 +154,8 @@
     </style>
 </head>
 <body class="overflow-x-hidden">
-
-    <!-- Navigation -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WVVF44VEB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav class="fixed w-full z-50 px-6 py-4 backdrop-blur-md border-b border-white/5 bg-[#1a1a1a]/95">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-4">
@@ -183,7 +188,6 @@
         </div>
     </nav>
 
-    <!-- Header Blog -->
     <header class="relative pt-40 pb-20 px-6 overflow-hidden">
         <div class="glow-circle w-[500px] h-[500px] bg-[#9ded3a] -top-20 -left-20"></div>
         <div class="max-w-7xl mx-auto text-center relative z-10">
@@ -196,11 +200,9 @@
         </div>
     </header>
 
-    <!-- Section Articles -->
     <section class="py-20 px-6">
         <div class="max-w-7xl mx-auto">
             
-            <!-- Filtres -->
             <div class="flex flex-wrap gap-4 mb-16 justify-center">
                 <button class="blog-tag bg-[#9ded3a] text-black">Tous les articles</button>
                 <button class="blog-tag hover:bg-[#9ded3a]/20 transition-colors">Récits</button>
@@ -208,10 +210,8 @@
                 <button class="blog-tag hover:bg-[#9ded3a]/20 transition-colors">Coulisses</button>
             </div>
 
-            <!-- Grille d'articles -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Article 1 -->
                 <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
                     <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
                         <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
@@ -233,7 +233,6 @@
                     </div>
                 </article>
 
-                <!-- Article 2 -->
                 <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
                     <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
                         <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
@@ -255,7 +254,6 @@
                     </div>
                 </article>
 
-                <!-- Article 3 -->
                 <article class="card-blur rounded-3xl overflow-hidden flex flex-col group">
                     <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative overflow-hidden">
                         <div class="absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700 bg-[url('https://images.unsplash.com/photo-1473830394358-91588751b241?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"></div>
@@ -277,7 +275,6 @@
                     </div>
                 </article>
 
-                <!-- À venir -->
                 <article class="rounded-3xl overflow-hidden flex flex-col bg-white/[0.02] border border-white/5 min-h-[420px]">
                     <div class="h-48 bg-gradient-to-br from-gray-800 to-black relative flex items-center justify-center">
                         <span class="blog-tag">À venir</span>
@@ -293,7 +290,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-12 px-6 border-t border-white/5 bg-black/20">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex items-center gap-4">
@@ -371,23 +367,7 @@
             });
         }
 
-        window.addEventListener('scroll', () => {
-            if (menuListe && !menuListe.classList.contains('hidden') && window.innerWidth < 768) {
-                menuListe.classList.add('hidden');
-                menuListe.classList.remove(
-                    'flex',
-                    'flex-col',
-                    'absolute',
-                    'top-full',
-                    'left-0',
-                    'w-full',
-                    'bg-[#111]/95',
-                    'p-6',
-                    'border-b',
-                    'border-white/10'
-                );
-            }
-        });
+        window.scroll(0, 0); // Reset scroll position
     </script>
 </body>
 </html>
