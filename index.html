@@ -15,9 +15,11 @@
     <link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
     <link rel="icon" type="image/png" sizes="512x512" href="favicon-512x512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --dark-bg: #1a1a1a;
@@ -53,11 +55,10 @@
             transform: translateY(-5px);
         }
 
-        /* Dégradé spécifique pour le mot "sa" */
         .sa-gradient {
             background: linear-gradient(to bottom right, #9ded3a, #3b82f6);
             -webkit-background-clip: text;
-            background-clip: text; /* Ajoute cette ligne pour la compatibilité */
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
@@ -73,7 +74,6 @@
             transform: scale(1.05);
         }
 
-        /* --- LOGO DYNAMIQUE --- */
         .logo-container {
             display: flex;
             align-items: center;
@@ -126,13 +126,14 @@
             z-index: 3;
         }
 
-        /* Version pour fond vert : le cœur devient blanc */
         .on-green-bg .logo-spinning-core {
             background: conic-gradient(from 0deg, transparent, white, transparent 60%);
         }
+
         .on-green-bg .logo-spinning-core::after {
             background: var(--accent-green);
         }
+
         .on-green-bg .logo-dot {
             box-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
@@ -154,34 +155,32 @@
             text-transform: uppercase;
         }
 
-        /* --- SOUS-TITRE PROJET --- */
         .project-subtitle {
-            color: #d1d5db;      /* Gris clair */
-            font-style: italic;  /* Italique */
-            font-size: 0.85rem;  /* Taille adaptée */
-            display: block;      /* Passage à la ligne forcé */
-            margin-top: -0.1rem;  /* Espace avec le titre du dessus */
-            font-weight: 400;    /* Pas de gras */
-            text-transform: none; /* Annule l'uppercase si hérité */
-            letter-spacing: normal; /* Annule le tracking-widest si hérité */
+            color: #d1d5db;
+            font-style: italic;
+            font-size: 0.85rem;
+            display: block;
+            margin-top: -0.1rem;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: normal;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-    /* Force l'état caché au départ pour toutes les sections */
-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
 
-/* La classe qui sera ajoutée par le script pour révéler */
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
     
     <meta name="description" content="Et si entendre l’histoire de quelqu’un d’autre pouvait changer la manière dont vous regardez la vôtre? Découvrez Prendre sa place : un événement unique en Belgique dédié aux récits de vie authentiques. Un espace de résonance pour transformer le doute en levier et retrouver votre légitimité.">
@@ -190,7 +189,8 @@ section.visible {
     <meta property="og:description" content="Et si entendre l’histoire de quelqu’un d’autre pouvait changer la manière dont vous regardez la vôtre? Découvrez Prendre sa place : un événement unique en Belgique dédié aux récits de vie authentiques. Un espace de résonance pour transformer le doute en levier et retrouver votre légitimité.">
     <meta property="og:image" content="https://prendresaplace.be/affiche-evenement.png?v=1">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://prendresaplace.be"> <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="https://prendresaplace.be">
+    <meta name="twitter:card" content="summary_large_image">
 
     <script type="application/ld+json">
 {
@@ -221,22 +221,20 @@ section.visible {
   }
 }
 </script>
-<!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WVVF44VEB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-5WVVF44VEB');
 </script>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 </head>
-        <body class="overflow-x-hidden">
+<body class="overflow-x-hidden">
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 px-6 py-4 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-4">
@@ -252,38 +250,43 @@ section.visible {
                     PRENDRE <span class="sa-gradient">SA</span> PLACE
                 </div>
             </div>
-            <div class="flex items-center gap-4">
-            <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
 
-            <div id="nav-menu" class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest items-center">
-                <a href="#intention" class="hover:text-[#9ded3a] transition-colors">Contenu</a>
-                <a href="#manifeste" class="hover:text-[#9ded3a] transition-colors">Pourquoi ?</a>
-                <a href="#candidature" class="hover:text-[#9ded3a] transition-colors">Intervenir</a>
-                <a href="#sponsoring" class="hover:text-cyan-400 hover:drop-shadow-[0_0_6px_rgba(34,211,238,0.6)] transition-all">Sponsors</a>
-                <a href="blog.html" class="hover:text-[#9ded3a] transition-colors font-bold">Blog</a> <!-- Lien vers le blog -->
-                <a href="#lieu" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">S'inscrire</a>
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-button" class="md:hidden text-white p-2 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <div id="nav-menu" class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest items-center">
+                    <a href="#intention" class="hover:text-[#9ded3a] transition-colors">Concept</a>
+                    <a href="#edition-1" class="hover:text-[#9ded3a] transition-colors">Édition #1</a>
+                    <a href="#candidature" class="hover:text-[#9ded3a] transition-colors">Intervenir</a>
+                    <a href="#sponsoring" class="hover:text-cyan-400 hover:drop-shadow-[0_0_6px_rgba(34,211,238,0.6)] transition-all">Sponsors</a>
+                    <a href="blog.html" class="hover:text-[#9ded3a] transition-colors font-bold">Blog</a>
+                    <a href="#lieu" class="btn-primary px-4 py-2 rounded-full text-xs font-bold">S'inscrire</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
         <div class="glow-circle w-[500px] h-[500px] bg-[#9ded3a] -top-20 -left-20"></div>
         <div class="glow-circle w-[400px] h-[400px] bg-blue-600 bottom-0 right-0"></div>
+
         <div class="max-w-5xl mx-auto text-center z-10">
             <div class="flex justify-center mb-6 opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]">
                 <span class="edition-badge">PREMIÈRE ÉDITION</span>
             </div>
+
             <h1 aria-label="Prendre sa place" class="text-7xl md:text-[08rem] font-extrabold mb-8 tracking-tighter leading-none opacity-0 translate-y-4 animate-[fadeIn_1s_ease-out_0.2s_forwards]">
                 Prendre <br><span class="sa-gradient">sa</span> <br>place.
             </h1>
+
             <h2 class="text-white/60 text-lg md:text-2xl font-medium tracking-[0.2em] uppercase mb-10 opacity-0 animate-[fadeIn_1s_ease-out_0.4s_forwards]" style="font-size: 1.1rem;">
                 Cinq récits vrais sur ces instants où l’on choisit enfin sa place. <br>Édition #1 à Bruxelles.
             </h2>
+            
             <div class="flex flex-col md:flex-row gap-4 justify-center items-center opacity-0 animate-[fadeIn_1s_ease-out_0.6s_forwards]">
                 <a href="#lieu" class="btn-primary px-8 py-4 rounded-full font-bold w-full md:w-auto shadow-lg shadow-[#9ded3a]/20">S'inscrire</a>
                 <a href="#contenu" class="border border-white/20 hover:bg-white/10 px-8 py-4 rounded-full font-bold w-full md:w-auto transition-all">Découvrir le programme</a>
@@ -291,41 +294,50 @@ section.visible {
         </div>
     </section>
 
-    <!-- Question Section -->
     <section class="py-24 px-6 bg-black relative overflow-hidden">
-    <div class="max-w-6xl mx-auto text-center">
-        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tighter text-white">
-    Et si entendre l’histoire de quelqu’un d’autre pouvait changer la manière dont vous regardez la 
-    <span class="sa-gradient italic sm:pr-2">vôtre </span>?
-        </h2>
-    </div>
-</section>
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tighter text-white">
+                Et si entendre l’histoire de quelqu’un d’autre pouvait changer la manière dont vous regardez la 
+                <span class="sa-gradient italic sm:pr-2">vôtre </span>?
+            </h2>
+        </div>
+    </section>
 
-        <!-- Section Intention (Contenu PDF) -->
     <section id="intention" class="py-24 px-6 bg-white/5">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <h2 class="text-3xl font-bold mb-6">Plus qu'une conférence,<br><span class="text-[#9ded3a]">une résonance.</span></h2>
+                <p class="text-[#9ded3a] font-bold tracking-[0.2em] uppercase text-xs mb-4">Le concept</p>
+
+                <h2 class="text-3xl font-bold mb-6">
+                    Plus qu'une conférence,<br><span class="text-[#9ded3a]">une résonance.</span>
+                </h2>
+
                 <div class="w-20 h-1 bg-[#9ded3a] mb-8"></div>
+
                 <p class="text-gray-300 mb-6">
-                    <strong>Prendre <span class="sa-gradient">sa</span> place</strong> , c'est découvrir ces moments où d'autres ont choisi d'assumer pleinement la leur, ces instants où quelque chose bascule et où un choix devient inévitable. C'est un espace pour regarder avec lucidité les périodes de doute qui précèdent souvent les décisions importantes, celles qui ouvrent un nouveau chemin.
+                    <strong>Prendre <span class="sa-gradient">sa</span> place</strong>, c'est découvrir ces moments où d'autres ont choisi d'assumer pleinement la leur, ces instants où quelque chose bascule et où un choix devient inévitable. C'est un espace pour regarder avec lucidité les périodes de doute qui précèdent souvent les décisions importantes, celles qui ouvrent un nouveau chemin.
                 </p>
-                <p class="text-gray-400 mb-8 leading-relaxed">
+
+                <p class="text-gray-400 mb-6 leading-relaxed">
                     Nous croyons que trouver sa place est un cheminement, pas une destination. Ici, on ne transmet pas de méthodes "toutes faites". On ouvre des espaces de réflexion à partir d'expériences vécues, pour que chacun puisse clarifier ses propres choix.
                 </p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-[#9ded3a]">
-                      </div> </div>
+
+                <p class="text-white-400 leading-relaxed">
+                    Cet évènement se décline en plusieurs éditions, chacune explorant une thématique différente : autant de façons de raconter, d'écouter et de trouver sa place.
+                </p>
             </div>
+
             <div class="grid grid-cols-1 gap-4">
                 <div class="card-blur p-8 rounded-2xl border-l-4 border-white">
                     <h4 class="text-white font-bold mb-2 uppercase text-xs tracking-widest">L'Essence</h4>
                     <p class="text-lg font-bold">Des trajectoires diverses, pour porter un regard plus juste sur son propre parcours.</p>
                 </div>
+
                 <div class="card-blur p-8 rounded-2xl border-l-4 border-[#9ded3a]">
                     <h4 class="text-[#9ded3a] font-bold mb-2 uppercase text-xs tracking-widest">Le Message</h4>
                     <p class="text-lg font-bold">Il n’existe pas de trajectoire parfaite pour trouver sa place.</p>
                 </div>
+
                 <div class="card-blur p-8 rounded-2xl border-l-4 border-blue-500">
                     <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-widest">L'Impact</h4>
                     <p class="text-lg font-bold">Se sentir plus légitime dans ses décisions et ses orientations.</p>
@@ -334,34 +346,58 @@ section.visible {
         </div>
     </section>
 
-    <!-- Section Détails du Contenu (Nouveau Focus PDF) -->
+
+<!-- Section Thématique édition -->
+<section id="edition-1" class="py-20 px-6 bg-black relative overflow-hidden">
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+        <p class="text-[#9ded3a] font-bold tracking-[0.25em] uppercase text-xs mb-4">
+            Thématique de l’édition #1
+        </p>
+
+        <h2 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tighter text-white mb-6">
+            Des <span class="sa-gradient">parcours professionnels</span><br class="hidden md:block">
+             remis en question.
+        </h2>
+
+        <p class="text-lg md:text-2xl text-white/80 font-medium mb-8">
+            Cinq récits pour oser réinventer le vôtre.
+        </p>
+
+        <div class="w-24 h-1 bg-[#9ded3a] mx-auto mb-8"></div>
+
+        <p class="max-w-3xl mx-auto text-gray-400 text-base md:text-lg leading-relaxed">
+            Pour cette première édition, <strong>Prendre <span class="sa-gradient">sa</span> place</strong> donne la parole à ceux qui ont vécu un moment de bascule, cet instant où quelque chose d'intérieur dit «plus comme ça», et qui ont choisi de réinventer leur parcours professionnel. 
+            Cinq récits vrais sur ces moments qui changent tout.
+        </p>
+    </div>
+
+    <div class="glow-circle w-[300px] h-[300px] bg-[#9ded3a] top-0 left-10"></div>
+    <div class="glow-circle w-[260px] h-[260px] bg-blue-600 bottom-0 right-10"></div>
+</section>
+
     <section id="contenu" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold mb-16 text-center">L'expérience du récit</h2>
+            <h2 class="text-4xl font-bold mb-6 text-center">L'expérience du récit</h2>
+<p class="text-gray-400 text-center max-w-3xl mx-auto mb-16">
+    Cinq prises de parole, cinq moments de bascule, cinq façons d’éclairer son propre chemin.
+</p>
             
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-12">
                     <div class="border-b border-white/5 pb-8">
-                        <h4 class="text-2xl font-bold mb-4 text-[#9ded3a]">Des récits de bascule</h4>
-                        <p class="text-gray-400">Cinq intervenants partagent un moment où quelque chose a dû être reconsidéré :
-                        une décision, une direction, une posture.
-                        Pas de théorie. Pas de leçon.
-                        Uniquement du vécu qui fait écho à des situations réelles.</p>
-                    </div>
+                        <h4 class="text-2xl font-bold mb-4 text-[#9ded3a]">Des moments de bascule</h4>
+                        <p class="text-gray-400">
+                            Peu importe où vous en êtes professionnellement. Que vous cherchiez votre voie depuis des mois ou que vous occupiez un poste enviable depuis des années. Que vous doutiez de vos capacités ou que vous rêviez en secret d'une vie professionnelle qui vous ressemble davantage.
+                            À un moment, quelque chose dit stop. Une évidence qui s'impose, un malaise qu'on ne peut plus ignorer.
+                            Nos cinq intervenants ont traversé ce moment. Ils ont osé écouter ce signal. Et lors de cette soirée, ils viendront raconter où ça les a menés.
+                        </p>
+                       </div>
+
                     <div class="border-b border-white/5 pb-8">
                         <h4 class="text-2xl font-bold mb-4 text-white">Le format</h4>
                         <p class="text-gray-400">
-                        Une diversité d’expériences pour porter un regard plus nuancé sur son propre parcours. 
-    <span class="font-semibold bg-gradient-to-r from-[#9ded3a] to-blue-400 bg-clip-text text-transparent">
-    5 moments
-    </span> difficiles où une trajectoire a évolué.
-    <br>
-    <span class="font-semibold bg-gradient-to-r from-[#9ded3a] to-blue-400 bg-clip-text text-transparent">
-    15 minutes
-        </span> par récit. 
-        <span class="font-semibold bg-gradient-to-r from-[#9ded3a] to-blue-400 bg-clip-text text-transparent">
-            5 manières
-            </span> différentes de trouver sa place.
+                            Une soirée conçue pour inspirer et faire réfléchir. Cinq intervenants racontent ces moments de bascule qui ont réinventé leur parcours professionnel. Et en clôture, une spécialiste éclaire ces blocages intérieurs qui nous empêchent souvent d'oser.
+                            Vous repartirez avec un regard différent sur votre parcours et quelques clés pour avancer.
                         </p>
                     </div>
                 </div>
@@ -373,22 +409,33 @@ section.visible {
                             <li class="flex gap-4">
                                 <div class="text-[#9ded3a] font-bold mt-1">✓</div>
                                 <div>
-                                    <span class="block font-bold">L'Art de douter</span>
-                                    <span class="text-sm text-gray-500">Quand une situation amène à se poser des questions.</span>
+                                    <span class="block font-bold">5 récits sur scène</span>
+                                    <span class="text-sm text-gray-500"> Cinq intervenants partagent un moment de bascule qui a transformé leur trajectoire professionnelle.</span>
                                 </div>
                             </li>
+
                             <li class="flex gap-4">
                                 <div class="text-[#9ded3a] font-bold mt-1">✓</div>
                                 <div>
-                                    <span class="block font-bold">Sortir du cadre prévu</span>
-                                    <span class="text-sm text-gray-500">Quand le chemin imaginé ne correspond plus à la réalité.</span>
+                                    <span class="block font-bold">15 minutes par récit</span>
+                                    <span class="text-sm text-gray-500">Un format court pour transmettre l’essentiel d’une expérience vécue, avec clarté et sincérité.
+                                    </span>
                                 </div>
                             </li>
+
                             <li class="flex gap-4">
                                 <div class="text-[#9ded3a] font-bold mt-1">✓</div>
                                 <div>
-                                    <span class="block font-bold">Le moment de décider</span>
-                                    <span class="text-sm text-gray-500">Quand il faut avancer sans avoir toutes les certitudes.</span>
+                                    <span class="block font-bold">Un moment d’inspiration</span>
+                                    <span class="text-sm text-gray-500"> Un espace d’écoute et de résonance pour prendre du recul sur son propre parcours.</span>
+                                </div>
+                            </li>
+                        
+                        <li class="flex gap-4">
+                                <div class="text-[#9ded3a] font-bold mt-1">✓</div>
+                                <div>
+                                    <span class="block font-bold">L’intervention d’une spécialiste</span>
+                                    <span class="text-sm text-gray-500"> Une intervention finale pour apporter quelques clés de compréhension et ouvrir des pistes de réflexion.</span>
                                 </div>
                             </li>
                         </ul>
@@ -398,57 +445,57 @@ section.visible {
         </div>
     </section>
 
-
-    <!-- Profil Paola Luyo -->
-  <section id="manifeste" class="py-20 px-6 bg-black overflow-hidden">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
-            
-           <div class="w-full md:w-2/5 flex justify-center relative">
-    <div class="absolute inset-0 bg-[#9ded3a]/20 blur-3xl rounded-full scale-90"></div>
-    
-    <a href="https://www.linkedin.com/in/paolaluyo" target="_blank" class="relative z-10 block group">
-        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-[#9ded3a]/30 overflow-hidden shadow-2xl shadow-[#9ded3a]/10 transition-all duration-500 group-hover:scale-105 group-hover:border-[#9ded3a]">
-            <img src="paola.png" alt="Portrait de Paola Luyo, organisatrice de l'évènement Prendre sa Place en Belgique" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-        </div>
-    </a>
-</div>
-
-            <div class="w-full md:w-3/5 text-left">
-                <div class="mb-8 border-l-2 border-[#9ded3a] pl-6">
-                    <h2 class="sr-only">L'intention derrière l'événement Prendre sa place</h2> 
-        
-                    <h3 class="text-4xl md:text-5xl font-normal mb-1 text-white" style="font-family: 'Shadows Into Light', cursive;">
-                    Paola Luyo
-                </h3>
-                <p class="sa-gradient font-bold tracking-widest uppercase text-xs mb-2">Organisatrice & speaker</p>
-                <p class="project-subtitle">Initiatrice du projet Prendre sa place</p>
-            </div>
-
-                <div class="space-y-6 text-gray-400 leading-snug text-sm md:text-base">
-                    <p class="text-[#9ded3a] italic font-normal">
-                     Trouver sa place commence souvent par écouter ce qui nous dérange.  </p>
-
-                    <p>Pendant plus de 22 ans de carrière dans la fintech, j’ai occupé des postes à responsabilités où l’on croyait en moi et où l’on me faisait confiance. 
-                    Et pourtant, malgré ce beau parcours, un doute persistait en silence : l’impression de ne pas être complètement à ma place, la sensation de ne pas être légitime d’occuper cette place.</p>
-
-                    <p class="text-white italic font-medium border-l border-white/10 pl-4 py-1 leading-tight">
-                    Une sensation d’inconfort revenait régulièrement, comme le signal discret qu’un changement était nécessaire.</p>
-                  
-                    <p>Nous n’écoutons pas toujours ces signaux. Par confort. Par peur. Par habitude. Parce que changer de direction implique d’affronter l’incertitude.</p>
-
-                    <p>Jusqu’au moment où quelque chose bascule et où une question devient inévitable :</p>
+    <section id="manifeste" class="py-20 px-6 bg-black overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+                <div class="w-full md:w-2/5 flex justify-center relative">
+                    <div class="absolute inset-0 bg-[#9ded3a]/20 blur-3xl rounded-full scale-90"></div>
                     
-                    <p class="text-white italic font-medium border-l border-white/10 pl-4 py-1 leading-tight">
-                        "Continue-t-on comme avant… ou choisit-on d’évoluer ?"
-                    </p>
+                    <a href="https://www.linkedin.com/in/paolaluyo" target="_blank" class="relative z-10 block group">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-[#9ded3a]/30 overflow-hidden shadow-2xl shadow-[#9ded3a]/10 transition-all duration-500 group-hover:scale-105 group-hover:border-[#9ded3a]">
+                            <img src="paola.png" alt="Portrait de Paola Luyo, organisatrice de l'évènement Prendre sa Place en Belgique" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        </div>
+                    </a>
+                </div>
 
-                    <p>C'est de cette réflexion qu'est né Prendre sa place: un espace pour partager des récits vrais de moments difficiles qui ont transformé une trajectoire.<span class="text-[#9ded3a] font-bold">Remettre l’essentiel au centre : la parole vécue.</span> 
-                    Parce qu’entendre l’expérience des autres peut parfois éclairer la nôtre.</p>
+                <div class="w-full md:w-3/5 text-left">
+                    <div class="mb-8 border-l-2 border-[#9ded3a] pl-6">
+                        <h2 class="sr-only">L'intention derrière l'événement Prendre sa place</h2> 
+                        <h3 class="text-4xl md:text-5xl font-normal mb-1 text-white" style="font-family: 'Shadows Into Light', cursive;">
+                            Paola Luyo
+                        </h3>
+                        <p class="sa-gradient font-bold tracking-widest uppercase text-xs mb-2">Organisatrice & speaker</p>
+                        <p class="project-subtitle">Initiatrice du projet Prendre sa place</p>
+                    </div>
 
-                 
+                    <div class="space-y-6 text-gray-400 leading-snug text-sm md:text-base">
+                        <p class="text-[#9ded3a] italic font-normal">
+                            Trouver sa place commence souvent par écouter ce qui nous dérange.
+                        </p>
 
-                    <!-- Nouveaux blocs Design pour "Pour qui" et "Intention" -->
+                        <p>
+                            Pendant plus de 22 ans de carrière dans la fintech, j’ai occupé des postes à responsabilités où l’on croyait en moi et où l’on me faisait confiance. 
+                            Et pourtant, malgré ce beau parcours, un doute persistait en silence : l’impression de ne pas être complètement à ma place, la sensation de ne pas être légitime d’occuper cette place.
+                        </p>
+
+                        <p class="text-white italic font-medium border-l border-white/10 pl-4 py-1 leading-tight">
+                            Une sensation d’inconfort revenait régulièrement, comme le signal discret qu’un changement était nécessaire.
+                        </p>
+                      
+                        <p>Nous n’écoutons pas toujours ces signaux. Par confort. Par peur. Par habitude. Parce que changer de direction implique d’affronter l’incertitude.</p>
+
+                        <p>Jusqu’au moment où quelque chose bascule et où une question devient inévitable :</p>
+                        
+                        <p class="text-white italic font-medium border-l border-white/10 pl-4 py-1 leading-tight">
+                            "Continue-t-on comme avant… ou choisit-on d’évoluer ?"
+                        </p>
+
+                        <p>
+                            C'est de cette réflexion qu'est né Prendre sa place: un espace pour partager des récits vrais de moments difficiles qui ont transformé une trajectoire.
+                            <span class="text-[#9ded3a] font-bold">Remettre l’essentiel au centre : la parole vécue.</span> 
+                            Parce qu’entendre l’expérience des autres peut parfois éclairer la nôtre.
+                        </p>
+
                         <div class="pt-8 grid sm:grid-cols-2 gap-4">
                             <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-[#9ded3a]/30 transition-all duration-300">
                                 <h5 class="text-[#9ded3a] font-bold tracking-widest uppercase text-[10px] mb-3 flex items-center gap-2">
@@ -458,56 +505,60 @@ section.visible {
                                     Pour celles et ceux qui traversent des transitions ou ressentent qu'un changement devient nécessaire, et savent qu'un récit sincère peut créer un déclic.
                                 </p>
                             </div>
+
                             <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition-all duration-300">
                                 <h5 class="text-blue-400 font-bold tracking-widest uppercase text-[10px] mb-3 flex items-center gap-2">
                                     <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span> Notre intention
                                 </h5>
                                 <p class="text-xs md:text-sm text-gray-300 leading-relaxed">
                                     Créer un espace de résonance pour repartir avec plus de clarté et une sensation simple : <span class="text-white italic">“je ne suis pas seul·e à traverser ça.”</span>
-                        </p>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- Section Lieu & Prochainement -->
     <section id="lieu" class="py-24 px-6 relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <h3 class="text-4xl font-bold mb-8">Où et quand aura lieu l'évènement ?</h3>
             <div class="card-blur p-12 rounded-3xl border-2 border-dashed border-white/10">
                 <div class="mb-6 inline-block p-4 bg-white/5 rounded-full">
-                    <svg class="w-12 h-12 text-[#9ded3a] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <svg class="w-12 h-12 text-[#9ded3a] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
                 </div>
+
                 <h4 class="text-2xl font-bold mb-4">Infos dévoilées prochainement</h4>
+
                 <p class="text-gray-400 max-w-xl mx-auto mb-8">
                     L'évènement se tiendra à Bruxelles en <strong>septembre 2026</strong>, la date exacte sera dévoilée très prochainement. Nous voulons que cette <strong>première édition </strong>, soit inoubliable et à fort impact. Les détails seront envoyés par email en priorité aux inscrit.e.s.
                 </p>
+
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <form action="https://formspree.io/f/mlgwoaow" method="POST" class="flex flex-col md:flex-row gap-4 justify-center">
-    
-    <!-- Honeypot anti-spam -->
-    <input type="text" name="_gotcha" style="display:none">
+                        <input type="text" name="_gotcha" style="display:none">
 
-     <input 
-        type="email" 
-        name="email" 
-        required 
-        pattern=".+@.+\..+" 
-        placeholder="Votre email" 
-        class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white"
-    >
-        
-    <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">
-        Envoyer
-    </button>
-</form>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            required 
+                            pattern=".+@.+\..+" 
+                            placeholder="Votre email" 
+                            class="bg-white/5 border border-white/10 rounded-full px-6 py-4 focus:outline-none focus:border-[#9ded3a] w-full md:w-80 text-white"
+                        >
+                        
+                        <button type="submit" class="btn-primary px-8 py-4 rounded-full font-bold">
+                            Envoyer
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-        <!-- Décoration de fond -->
+
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none scale-150">
             <div class="logo-container">
                 <div class="w-96 h-96 border-4 border-white rounded-full"></div>
@@ -515,21 +566,21 @@ section.visible {
         </div>
     </section>
 
-    <!-- Section Candidature -->
     <section id="candidature" class="py-24 px-6 bg-[#111]">
         <div class="max-w-4xl mx-auto card-blur p-12 rounded-3xl text-center border-t-2 border-[#9ded3a]">
-                    <h3 class="text-4xl font-bold mb-6">Devenez Intervenant.e</h3>
+            <h3 class="text-4xl font-bold mb-6">Devenez Intervenant.e</h3>
+
             <p class="text-gray-300 mb-10">
                 Vous avez vécu un moment de bascule qui a transformé votre trajectoire ?
                 Nous recherchons des voix sincères capables de transmettre une expérience vécue avec clarté, profondeur et authenticité.
             </p>
             
-           <div class="grid md:grid-cols-2 gap-8 text-left mb-12">
+            <div class="grid md:grid-cols-2 gap-8 text-left mb-12">
                 <div class="card-blur p-8 rounded-2xl border-t border-white/10 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300">
                     <h5 class="text-[#9ded3a] font-bold mb-3 uppercase text-xs tracking-widest">L'idée</h5>
                     <p class="text-white font-bold mb-2">Le moment de bascule</p>
-                    <p class="text-sm text-gray-500">Un moment réel de votre vie où quelque chose à changé : une décision difficile, une remise en question, une situation qui vous a 
-                        amené à évoluer ou à redéfinir votre place.
+                    <p class="text-sm text-gray-500">
+                        Un moment réel de votre vie où quelque chose à changé : une décision difficile, une remise en question, une situation qui vous a amené à évoluer ou à redéfinir votre place.
                     </p>
                 </div>
 
@@ -548,93 +599,87 @@ section.visible {
                 <div class="card-blur p-8 rounded-2xl border-t border-white/10 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300">
                     <h4 class="text-[#9ded3a] font-bold mb-4 uppercase text-xs tracking-widest">Récit Vidéo</h4>
                     <p class="text-white font-bold mb-2">Votre présence sur scène</p>
-                    <p class="text-sm text-gray-500">Envoyez-nous une vidéo courte (max. 3 minutes) pour nous permettre de découvrir votre aisance, votre clarté et votre capacité
-                        à transmettre votre message avec sincérité. (lien YouTube, Drive ou fichier WeTransfer par email).</p>
-            </div> <!-- fin du div.grid -->
+                    <p class="text-sm text-gray-500">Envoyez-nous une vidéo courte (max. 3 minutes) pour nous permettre de découvrir votre aisance, votre clarté et votre capacité à transmettre votre message avec sincérité. (lien YouTube, Drive ou fichier WeTransfer par email).</p>
+                </div>
+            </div>
 
-            </div> <div class="flex justify-center mt-8 md:mt-12 w-full">
-    <a href="mailto:info@prendresaplace.be?subject=Candidature : Soumettre mon récit&body=Bonjour Paola, je souhaite soumettre mon récit..." 
-       class="btn-primary px-10 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg inline-block text-center shadow-lg shadow-[#9ded3a]/20 transition-all hover:scale-105">
-        Soumettre mon récit
-    </a>
-</div>
-    </div> 
-</section>
+            <div class="flex justify-center mt-8 md:mt-12 w-full">
+                <a href="mailto:info@prendresaplace.be?subject=Candidature : Soumettre mon récit&body=Bonjour Paola, je souhaite soumettre mon récit..." 
+                   class="btn-primary px-10 py-4 md:px-12 md:py-5 rounded-full font-bold text-base md:text-lg inline-block text-center shadow-lg shadow-[#9ded3a]/20 transition-all hover:scale-105">
+                    Soumettre mon récit
+                </a>
+            </div>
+        </div> 
+    </section>
      
- <!-- Sponsors -->
-<section id="sponsoring" class="py-24 px-6 bg-neutral-900/40">
-    <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col lg:flex-row gap-16 items-start">
-            
-            <div class="w-full lg:w-1/2">
-                <span class="inline-block px-4 py-1 rounded-full border border-cyan-400/30 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6">
-                    Sponsoring
-                </span>
-                
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                    Devenez acteur de <br>
-                    <span class="text-cyan-400 italic" style="font-family: 'Shadows Into Light', cursive;">cette bascule.</span>
-                </h2>
-                
-                <p class="text-gray-400 text-base md:text-lg mb-8 leading-snug italic text-left">
-                    Soutenir "Prendre sa place", c’est s’associer à un évènement qui valorise l’authenticité. Laissez-nous vos coordonnées et discutons ensemble de votre impact.
-                </p>
-
-                <div class="space-y-4 text-sm text-gray-500 uppercase tracking-widest font-bold text-left">
-                    <p class="flex items-center gap-3"><span class="text-cyan-400">/</span> Visibilité engagée</p>
-                    <p class="flex items-center gap-3"><span class="text-cyan-400">/</span> Réseau authentique</p>
-                </div>
-            </div>
-
-            <div class="w-full lg:w-1/2 bg-black/40 p-8 rounded-3xl border border-white/5 shadow-2xl relative">
-                <form action="https://formspree.io/f/mojnyjok" method="POST" class="space-y-6">
+    <section id="sponsoring" class="py-24 px-6 bg-neutral-900/40">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-16 items-start">
+                <div class="w-full lg:w-1/2">
+                    <span class="inline-block px-4 py-1 rounded-full border border-cyan-400/30 text-cyan-400 text-xs font-bold uppercase tracking-widest mb-6">
+                        Sponsoring
+                    </span>
                     
-                    <!-- Honeypot anti-spam -->
-                    <input type="text" name="_gotcha" style="display:none">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                        Devenez acteur de <br>
+                        <span class="text-cyan-400 italic" style="font-family: 'Shadows Into Light', cursive;">cette bascule.</span>
+                    </h2>
                     
-                    <div class="text-left">
-                        <label for="name" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Nom et Prénom</label>
-                        <input type="text" id="name" name="nom_complet" placeholder="Votre nom" required 
-                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
-                    </div>
-
-                    <div class="text-left">
-                        <label for="email" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Email</label>
-                        <input type="email" id="email" name="email" placeholder="votre@email.com" required pattern=".+@.+\..+" 
-                        class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
-                    </div>
-
-                    <div class="text-left">
-                        <div class="flex justify-between items-center mb-2">
-                            <label for="phone" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest">Téléphone</label>
-                            <span class="text-[9px] text-gray-600 uppercase">Belgique (+32)</span>
-                        </div>
-                        <input type="tel" id="phone" name="telephone" placeholder="+32 " required 
-                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
-                    </div>
-
-                <div class="flex items-start gap-3 pt-2">
-                    <input type="checkbox" id="consent-sponsor" required class="mt-1 accent-cyan-400">
-                    <label for="consent-sponsor" class="text-[10px] text-gray-500 uppercase leading-tight">
-                        J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
-                    </label>
-                </div>
-
-                    <button type="submit" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-full transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] mt-4">
-                        Envoyer ma demande
-                    </button>
-                    
-                    <p class="text-[9px] text-gray-600 text-center uppercase tracking-[0.2em]">
-                        Vos données restent confidentielles • Réponse sous 48h
+                    <p class="text-gray-400 text-base md:text-lg mb-8 leading-snug italic text-left">
+                        Soutenir "Prendre sa place", c’est s’associer à un évènement qui valorise l’authenticité. Laissez-nous vos coordonnées et discutons ensemble de votre impact.
                     </p>
-                </form>
+
+                    <div class="space-y-4 text-sm text-gray-500 uppercase tracking-widest font-bold text-left">
+                        <p class="flex items-center gap-3"><span class="text-cyan-400">/</span> Visibilité engagée</p>
+                        <p class="flex items-center gap-3"><span class="text-cyan-400">/</span> Réseau authentique</p>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2 bg-black/40 p-8 rounded-3xl border border-white/5 shadow-2xl relative">
+                    <form action="https://formspree.io/f/mojnyjok" method="POST" class="space-y-6">
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="text-left">
+                            <label for="name" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Nom et Prénom</label>
+                            <input type="text" id="name" name="nom_complet" placeholder="Votre nom" required 
+                                class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                        </div>
+
+                        <div class="text-left">
+                            <label for="email" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest mb-2">Email</label>
+                            <input type="email" id="email" name="email" placeholder="votre@email.com" required pattern=".+@.+\..+" 
+                            class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                        </div>
+
+                        <div class="text-left">
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="phone" class="block text-cyan-400 text-[10px] font-bold uppercase tracking-widest">Téléphone</label>
+                                <span class="text-[9px] text-gray-600 uppercase">Belgique (+32)</span>
+                            </div>
+                            <input type="tel" id="phone" name="telephone" placeholder="+32 " required 
+                                class="w-full bg-white/5 border-b border-white/10 text-white px-4 py-3 focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-gray-700">
+                        </div>
+
+                        <div class="flex items-start gap-3 pt-2">
+                            <input type="checkbox" id="consent-sponsor" required class="mt-1 accent-cyan-400">
+                            <label for="consent-sponsor" class="text-[10px] text-gray-500 uppercase leading-tight">
+                                J'accepte d'être recontacté(e) pour les opportunités de sponsoring.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-full transition-all hover:scale-[1.02] active:scale-95 hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] mt-4">
+                            Envoyer ma demande
+                        </button>
+                        
+                        <p class="text-[9px] text-gray-600 text-center uppercase tracking-[0.2em]">
+                            Vos données restent confidentielles • Réponse sous 48h
+                        </p>
+                    </form>
+                </div>
             </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- Footer -->
     <footer class="py-12 px-6 border-t border-white/5">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex items-center gap-4">
@@ -676,76 +721,68 @@ section.visible {
         </div>
     </footer>
     
-     <script>
-    // L'observateur va surveiller quand les sections entrent dans l'écran
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // On ajoute la classe "visible" que tu as créée en haut dans ton CSS
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 }); // Se déclenche quand 10% de la section est visible
-
-    // On applique l'observateur à toutes les balises <section> du site
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-    // Gestion du menu mobile
-    const burger = document.getElementById('mobile-menu-button');
-    const menuListe = document.getElementById('nav-menu');
-
-    if (burger && menuListe) {
-        burger.addEventListener('click', () => {
-            // On bascule l'affichage du menu
-            menuListe.classList.toggle('hidden');
-            
-            // On ajoute les styles pour que le menu s'affiche joliment sous la barre de navigation
-            menuListe.classList.toggle('flex');
-            menuListe.classList.toggle('flex-col');
-            menuListe.classList.toggle('absolute');
-            menuListe.classList.toggle('top-full');
-            menuListe.classList.toggle('left-0');
-            menuListe.classList.toggle('w-full');
-            menuListe.classList.toggle('bg-[#111]/95'); // Fond sombre semi-transparent
-            menuListe.classList.toggle('p-6');
-            menuListe.classList.toggle('border-b');
-            menuListe.classList.toggle('border-white/10');
-        });
-
-        // Fermer le menu automatiquement quand on clique sur un lien (pour naviguer)
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 768) { // Uniquement sur mobile
-                    menuListe.classList.add('hidden');
-                    menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        });
-    }
-    // Fermer le menu automatiquement quand l'utilisateur scroll
-window.addEventListener('scroll', () => {
-    if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
-        menuListe.classList.add('hidden');
-        menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
-    }
-});
+        }, { threshold: 0.1 });
 
-    // ---TURNSTILE CALLBACK ---
-function onTurnstileSuccess(token) {
-    document.querySelectorAll('form').forEach(form => {
-        let input = form.querySelector('input[name="cf-turnstile-response"]');
-        if (!input) {
-            input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'cf-turnstile-response';
-            form.appendChild(input);
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        const burger = document.getElementById('mobile-menu-button');
+        const menuListe = document.getElementById('nav-menu');
+
+        if (burger && menuListe) {
+            burger.addEventListener('click', () => {
+                menuListe.classList.toggle('hidden');
+                menuListe.classList.toggle('flex');
+                menuListe.classList.toggle('flex-col');
+                menuListe.classList.toggle('absolute');
+                menuListe.classList.toggle('top-full');
+                menuListe.classList.toggle('left-0');
+                menuListe.classList.toggle('w-full');
+                menuListe.classList.toggle('bg-[#111]/95');
+                menuListe.classList.toggle('p-6');
+                menuListe.classList.toggle('border-b');
+                menuListe.classList.toggle('border-white/10');
+            });
+
+            document.querySelectorAll('#nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        menuListe.classList.add('hidden');
+                        menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+                    }
+                });
+            });
         }
-        input.value = token;
-    });
-}
-    // ---CONFIGURATION GOOGLE ANALYTICS ---
-        const GA_ID = 'G-5WVVF44VEB'; // <--- REMPLACE PAR TON ID RÉEL
+
+        window.addEventListener('scroll', () => {
+            if (!menuListe.classList.contains('hidden') && window.innerWidth < 768) {
+                menuListe.classList.add('hidden');
+                menuListe.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-[#111]/95', 'p-6', 'border-b', 'border-white/10');
+            }
+        });
+
+        function onTurnstileSuccess(token) {
+            document.querySelectorAll('form').forEach(form => {
+                let input = form.querySelector('input[name="cf-turnstile-response"]');
+                if (!input) {
+                    input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'cf-turnstile-response';
+                    form.appendChild(input);
+                }
+                input.value = token;
+            });
+        }
+
+        const GA_ID = 'G-5WVVF44VEB';
 
         function loadGA() {
             const script = document.createElement('script');
@@ -759,7 +796,6 @@ function onTurnstileSuccess(token) {
             gtag('config', GA_ID);
         }
 
-    // ---GESTION DU BANDEAU COOKIE ---
         window.addEventListener('DOMContentLoaded', () => {
             const consent = localStorage.getItem('cookieConsent');
             const banner = document.getElementById('cookie-banner');
@@ -791,28 +827,27 @@ function onTurnstileSuccess(token) {
         }
     </script>
 
-<div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md bg-[#1a1a1a] border border-[#9ded3a]/30 p-6 rounded-2xl shadow-2xl z-[100] transform translate-y-20 opacity-0 transition-all duration-700">
-    <div class="flex flex-col gap-4">
-        <div class="flex items-center gap-3">
-            <div class="w-2 h-2 bg-[#9ded3a] rounded-full animate-pulse"></div>
-            <p class="text-white font-bold text-sm tracking-widest uppercase">Respect de la vie privée</p>
-        </div>
-        <p class="text-gray-400 text-xs leading-relaxed">
-            Ce site utilise des cookies pour mesurer l'audience et personnaliser votre navigation. Ces données nous aident à faire grandir le projet "Prendre sa place". Acceptez-vous l'utilisation de ces outils ?
-        </p>
-        <div class="flex gap-3">
-            <button onclick="acceptCookies()" class="bg-[#9ded3a] text-black text-xs font-bold py-2 px-6 rounded-lg hover:scale-105 transition-transform">Accepter</button>
-            <button onclick="refuseCookies()" class="bg-transparent border border-white/10 text-white text-xs font-bold py-2 px-6 rounded-lg hover:bg-white/5 transition-colors">Refuser</button>
+    <div id="cookie-banner" class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md bg-[#1a1a1a] border border-[#9ded3a]/30 p-6 rounded-2xl shadow-2xl z-[100] transform translate-y-20 opacity-0 transition-all duration-700">
+        <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-[#9ded3a] rounded-full animate-pulse"></div>
+                <p class="text-white font-bold text-sm tracking-widest uppercase">Respect de la vie privée</p>
+            </div>
+            <p class="text-gray-400 text-xs leading-relaxed">
+                Ce site utilise des cookies pour mesurer l'audience et personnaliser votre navigation. Ces données nous aident à faire grandir le projet "Prendre sa place". Acceptez-vous l'utilisation de ces outils ?
+            </p>
+            <div class="flex gap-3">
+                <button onclick="acceptCookies()" class="bg-[#9ded3a] text-black text-xs font-bold py-2 px-6 rounded-lg hover:scale-105 transition-transform">Accepter</button>
+                <button onclick="refuseCookies()" class="bg-transparent border border-white/10 text-white text-xs font-bold py-2 px-6 rounded-lg hover:bg-white/5 transition-colors">Refuser</button>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Widget Turnstile unique -->
-<div id="turnstile-global" class="cf-turnstile" 
-     data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" 
-     data-size="normal" 
-     data-callback="onTurnstileSuccess">
-</div>
+    <div id="turnstile-global" class="cf-turnstile" 
+         data-sitekey="0x4AAAAAACndtMWY9NxG4p8Y" 
+         data-size="normal" 
+         data-callback="onTurnstileSuccess">
+    </div>
 
 </body>
 </html>
