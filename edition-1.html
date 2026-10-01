@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Édition #1 | Prendre sa place</title>
+
+    <meta name="description"
+          content="Revivre la première édition de Prendre sa place, organisée à Bruxelles le 24 septembre 2026 autour des parcours professionnels remis en question.">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Police -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+
+    <!-- Icônes réseaux sociaux -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+        --dark-bg: #1a1a1a;
+        --accent-green: #9ded3a;
+        --accent-blue: #3b82f6;
+        --accent-cyan: #22d3ee;
+        --text-gray: #e5e7eb;
+    }
+
+
+    /* =========================================================
+       BASE
+    ========================================================= */
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: #111;
+        color: var(--text-gray);
+        overflow-x: hidden;
+    }
+
+
+    /* =========================================================
+       LOGO PRENDRE SA PLACE
+    ========================================================= */
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .logo-circle-outer {
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .logo-center-wrapper {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        margin: 0 -10px;
+        z-index: 2;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-spinning-core {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+
+        background: conic-gradient(
+            from 0deg,
+            transparent,
+            var(--accent-green),
+            transparent 60%
+        );
+
+        animation: spin-logo 2s linear infinite;
+
+        filter:
+            blur(1px)
+            drop-shadow(0 0 6px rgba(157, 237, 58, 0.5));
+    }
+
+    .logo-spinning-core::after {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: #111;
+        border-radius: 50%;
+    }
+
+    .logo-dot {
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--accent-green);
+        z-index: 3;
+    }
+
+    @keyframes spin-logo {
+
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+
+    }
+
+
+    /* =========================================================
+       DÉGRADÉ PSP GÉNÉRAL
+    ========================================================= */
+
+    .sa-gradient {
+
+        background: linear-gradient(
+            135deg,
+            #9ded3a 0%,
+            #65c978 45%,
+            #3b82f6 100%
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        -webkit-text-fill-color: transparent;
+
+        display: inline-block;
+    }
+
+
+    /* =========================================================
+       DÉGRADÉ DU TITRE HERO
+       Couleurs plus fortes et plus lumineuses
+    ========================================================= */
+
+    .hero-gradient-solid {
+
+        background: linear-gradient(
+            90deg,
+            #9DED3A 0%,
+            #65C978 45%,
+            #22D3EE 75%,
+            #3B82F6 100%
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        -webkit-text-fill-color: transparent;
+
+        display: inline-block;
+
+        filter:
+            saturate(1.35)
+            brightness(1.15)
+            drop-shadow(0 0 8px rgba(157, 237, 58, 0.18));
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .edition-header {
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+
+        z-index: 100;
+
+        background: rgba(5, 5, 5, 0.78);
+
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .edition-hero {
+    position: relative;
+
+    min-height: 100vh;
+    padding-top: 72px;
+
+    display: flex;
+    align-items: flex-end;
+
+        background-image:
+
+            linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.76) 0%,
+                rgba(0, 0, 0, 0.45) 43%,
+                rgba(0, 0, 0, 0.12) 75%
+            ),
+
+            linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.92) 0%,
+                rgba(0, 0, 0, 0.25) 45%,
+                rgba(0, 0, 0, 0.08) 100%
+            ),
+
+            url("edition1-hero.jpg");
+
+        background-size: cover;
+
+        background-position: center center;
+
+        background-repeat: no-repeat;
+
+        overflow: hidden;
+    }
+
+
+    /* Léger assombrissement du bas */
+
+    .edition-hero::after {
+
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background: linear-gradient(
+            to bottom,
+            transparent 65%,
+            #111 100%
+        );
+
+        pointer-events: none;
+
+        z-index: 1;
+    }
+
+
+    .edition-hero-content {
+
+        position: relative;
+
+        z-index: 10;
+
+        width: 100%;
+    }
+
+
+    /* =========================================================
+       BADGE
+    ========================================================= */
+
+    .edition-badge {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        padding: 8px 16px;
+
+        border: 1px solid var(--accent-green);
+
+        border-radius: 999px;
+
+        color: var(--accent-green);
+
+        background: rgba(157, 237, 58, 0.08);
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        letter-spacing: 0.14em;
+
+        text-transform: uppercase;
+    }
+
+
+    .edition-badge-dot {
+
+        width: 6px;
+
+        height: 6px;
+
+        border-radius: 50%;
+
+        background: var(--accent-green);
+
+        box-shadow: 0 0 10px var(--accent-green);
+    }
+
+
+    /* =========================================================
+       HERO TITLE
+    ========================================================= */
+
+    .hero-title {
+
+        font-weight: 800;
+
+        letter-spacing: -0.055em;
+
+        line-height: 0.98;
+
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    }
+
+
+    /* =========================================================
+       SECTION DE TRANSITION
+    ========================================================= */
+
+    .intro-section {
+
+        position: relative;
+
+        background: #111;
+
+        overflow: hidden;
+    }
+
+
+    .intro-section::before {
+
+        content: "";
+
+        position: absolute;
+
+        width: 400px;
+
+        height: 400px;
+
+        border-radius: 50%;
+
+        background: rgba(157, 237, 58, 0.08);
+
+        filter: blur(100px);
+
+        top: -200px;
+
+        right: -150px;
+
+        pointer-events: none;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 768px) {
+
+        .edition-hero {
+
+            min-height: 90vh;
+
+            background-position: 60% center;
+        }
+
+        .hero-title {
+
+            letter-spacing: -0.04em;
+        }
+
+    }
+    /* =========================================================
+       SPEAKER QUOTE
+    ========================================================= */
+.speaker-quote {
+    font-family: 'Caveat', cursive;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+/* =========================================================
+   RÉSEAUX DES INTERVENANTES
+========================================================= */
+
+.speaker-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    margin-top: auto;
+    padding: 11px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.speaker-social-link {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 14px;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.speaker-social-link:hover {
+    color: #22D3EE;
+    border-color: #22D3EE;
+    background: rgba(34, 211, 238, 0.08);
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   UNE SOIRÉE VÉCUE ENSEMBLE
+========================================================= */
+
+.memories-section {
+    position: relative;
+    background: #111;
+    overflow: hidden;
+}
+
+.memories-section::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: rgba(34, 211, 238, 0.05);
+    filter: blur(120px);
+    top: 20%;
+    left: -220px;
+    pointer-events: none;
+}
+
+/* =========================================================
+   CARROUSEL SOUVENIRS
+========================================================= */
+
+.memories-carousel {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+/* FENÊTRE */
+
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+
+/* BANDE DE PHOTOS */
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+}
+
+
+/* SLIDE */
+
+.carousel-slide {
+    min-width: 82%;
+    padding: 0 12px;
+
+    opacity: 0.38;
+    transform: scale(0.94);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* PHOTO */
+
+.carousel-image {
+    width: 100%;
+    height: 620px;
+
+    object-fit: cover;
+    display: block;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+/* =========================================================
+   FLÈCHES
+========================================================= */
+
+.carousel-button {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    background: rgba(8, 8, 8, 0.82);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.carousel-button:hover {
+    color: #22D3EE;
+
+    border-color: #22D3EE;
+
+    background: rgba(8, 8, 8, 0.95);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+
+.carousel-prev {
+    left: 5%;
+}
+
+
+.carousel-next {
+    right: 5%;
+}
+
+
+/* =========================================================
+   COMPTEUR
+========================================================= */
+
+.carousel-counter {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+    gap: 7px;
+
+    margin-top: 26px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+}
+
+
+.carousel-current {
+    color: #9DED3A;
+
+    font-size: 17px;
+}
+
+
+.carousel-total {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* Petite ligne décorative */
+
+.carousel-progress {
+    width: 90px;
+    height: 1px;
+
+    margin: 14px auto 0;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    overflow: hidden;
+}
+
+
+.carousel-progress-bar {
+    height: 100%;
+
+    width: 0;
+
+    background: linear-gradient(
+        90deg,
+        #9DED3A,
+        #22D3EE
+    );
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .carousel-slide {
+        min-width: 88%;
+        padding: 0 5px;
+    }
+
+    .carousel-image {
+        height: 380px;
+        border-radius: 18px;
+    }
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-prev {
+        left: 12px;
+    }
+
+    .carousel-next {
+        right: 12px;
+    }
+}
+
+/* Toutes les cartes intervenantes ont la même structure */
+#intervenantes article {
+    display: flex;
+    flex-direction: column;
+}
+
+/* La zone des réseaux reste toujours en bas */
+#intervenantes .speaker-socials {
+    margin-top: auto;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="edition-header">
+
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+
+        <!-- LOGO -->
+
+        <a href="index.html"
+           class="flex items-center gap-4 group"
+           aria-label="Retour à l'accueil de Prendre sa place">
+
+
+            <div class="logo-container">
+
+                <div class="logo-circle-outer"></div>
+
+                <div class="logo-center-wrapper">
+
+                    <div class="logo-spinning-core"></div>
+
+                    <div class="logo-dot"></div>
+
+                </div>
+
+                <div class="logo-circle-outer"></div>
+
+            </div>
+
+
+            <div class="text-sm font-extrabold tracking-widest hidden sm:block">
+
+                PRENDRE
+
+                <span class="sa-gradient">
+                    SA
+                </span>
+
+                PLACE
+
+            </div>
+
+        </a>
+
+
+        <!-- RETOUR -->
+
+        <a href="index.html"
+           class="text-xs md:text-sm font-bold uppercase tracking-widest text-white/70 hover:text-[#9ded3a] transition-colors">
+
+            ← Retour au site
+
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO ÉDITION #1
+========================================================= -->
+
+<section class="edition-hero">
+
+
+    <div class="edition-hero-content">
+
+        <div class="max-w-7xl mx-auto px-6 pb-16 md:pb-20">
+
+
+            <div class="max-w-5xl">
+
+
+                <!-- Badge -->
+
+                <div class="edition-badge mb-7">
+
+                    <span class="edition-badge-dot"></span>
+
+                    Édition #1 · Bruxelles
+
+                </div>
+
+
+
+                <!-- Date -->
+
+                <p class="text-white/60 text-xs md:text-sm font-bold tracking-[0.28em] uppercase mb-6">
+
+                    24 septembre 2026
+
+                </p>
+
+
+
+                <!-- Titre -->
+
+                <h1 class="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-[5.4rem] text-white mb-8">
+
+                    Des
+
+                   <span class="hero-gradient-solid">
+                    parcours professionnels
+                    </span>
+
+                    <br class="hidden md:block">
+
+                    remis en question.
+
+                </h1>
+
+
+
+                <!-- Texte -->
+
+                <p class="max-w-2xl text-lg md:text-xl text-white/80 leading-relaxed">
+
+                    Une première soirée de récits vrais autour de ces moments où l'on
+                    s'arrête, où l'on doute, et où une question finit parfois par
+                    s'imposer :
+
+                    <span class="text-white font-bold">
+                        suis-je encore à ma place ?
+                    </span>
+
+                </p>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     LA PREMIÈRE ÉDITION
+========================================================= -->
+
+<section class="intro-section pt-10 pb-14 md:pt-14 md:pb-20 px-6">
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+            <!-- TEXTE -->
+            <div>
+
+                <p class="text-[#9DED3A] font-bold tracking-[0.25em] uppercase text-xs mb-5">
+                    La première édition
+                </p>
+
+                <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-7">
+                    Le soir où Prendre
+                    <span class="sa-gradient">sa</span>
+                    place est devenu réel.
+                </h2>
+
+                <div class="w-16 h-1 bg-[#9DED3A] mb-8"></div>
+
+                <div class="space-y-5 text-gray-400 text-base md:text-lg leading-relaxed">
+
+                    <p>
+                        Le 24 septembre 2026, à Bruxelles,
+                        <span class="text-white font-semibold">
+                            Prendre sa place prenait vie pour la première fois.
+                        </span>
+                    </p>
+
+                    <p>
+                        Des femmes aux parcours différents ont partagé un moment
+                        de leur vie professionnelle où quelque chose avait basculé :
+                        un doute, une rupture, une remise en question ou simplement
+                        cette sensation de ne plus être tout à fait à sa place.
+                    </p>
+
+                    <p class="text-white/90 font-medium">
+                        Pas pour donner une recette.
+                        Pas pour raconter un parcours parfait.
+                        Mais pour partager ce qu'elles avaient réellement vécu.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHOTO -->
+            <div class="relative">
+
+                <!-- Halo -->
+                <div
+                    class="absolute -inset-5 bg-[#9DED3A]/10 blur-3xl rounded-full">
+                </div>
+
+                <!-- Cadre photo -->
+                <div
+                    class="relative overflow-hidden rounded-3xl border border-white/10">
+
+                    <img
+                        src="edition1-intro.jpg"
+                        alt="Première édition de Prendre sa place à Bruxelles"
+                        class="w-full h-[480px] md:h-[600px] object-cover"
+                    >
+
+                    <!-- Dégradé sur le bas -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                    </div>
+
+                    <!-- Légende -->
+                    <div class="absolute bottom-6 left-6 right-6">
+
+                        <p
+                            class="text-white/60 text-[10px] md:text-xs uppercase tracking-[0.2em]">
+                            Bruxelles · 24 septembre 2026
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ELLES ONT PRIS LA PAROLE
+========================================================= -->
+
+<section id="intervenantes" class="pt-14 pb-14 md:pt-20 md:pb-16 px-6 bg-black relative overflow-hidden">
+
+    <!-- Halos décoratifs -->
+    <div class="absolute w-[400px] h-[400px] bg-[#9DED3A]/5 blur-[120px] rounded-full top-20 -left-40"></div>
+    <div class="absolute w-[400px] h-[400px] bg-[#22D3EE]/5 blur-[120px] rounded-full bottom-0 -right-40"></div>
+
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <!-- INTRO -->
+
+        <div class="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+
+            <p class="text-[#9DED3A] font-bold tracking-[0.25em] uppercase text-xs mb-4">
+                Elles ont pris la parole
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-5">
+                Cinq récits.
+                <br>
+                Cinq moments de bascule.
+            </h2>
+
+            <p class="text-gray-400 text-base md:text-lg leading-relaxed">
+                Cinq parcours différents, cinq histoires personnelles,
+                avec chacune sa propre manière de questionner sa place.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             GRILLE DES INTERVENANTES
+        ====================================================== -->
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+
+            <!-- ANAHI -->
+
+            <article class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03]">
+
+                <div class="relative h-[220px] xl:h-[250px] overflow-hidden">
+
+                    <img
+                        src="edition1-anahi.jpg"
+                        alt="Anahi lors de la première édition de Prendre sa place"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+                    <div class="absolute bottom-0 left-0 right-0 px-5 pb-3">
+                <h3 class="text-xl font-extrabold text-white">
+                Anahi
+               </h3>
+               </div>
+
+                </div>
+
+                <div class="p-6">
+
+                    <div class="w-8 h-[2px] bg-[#9DED3A] mb-5"></div>
+
+                    <p class="speaker-quote text-white">
+                        « Le jour où mon corps a parlé plus fort que mon mental.
+                    </p>
+                </div>
+
+<!-- RÉSEAUX ANAHI -->
+
+<div class="speaker-socials">
+
+    <!-- Site web -->
+    <a href="https://espacekalima.com/fr/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Site internet d'Anahi - Espace Kalima"
+       title="Site internet">
+
+        <i class="fa-solid fa-globe"></i>
+
+    </a>
+
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/EspaceKalima"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Facebook d'Anahi - Espace Kalima"
+       title="Facebook">
+
+        <i class="fa-brands fa-facebook-f"></i>
+
+    </a>
+
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/espace_kalima/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Instagram d'Anahi - Espace Kalima"
+       title="Instagram">
+
+        <i class="fa-brands fa-instagram"></i>
+
+    </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/anahi-gonzales-jimenez-espace-kalima-%F0%9F%A7%AD-56767491/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="speaker-social-link"
+        aria-label="LinkedIn d'Anahi - Espace Kalima"
+        title="LinkedIn">
+
+        <i class="fa-brands fa-linkedin-in"></i>
+
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@EspaceKalima"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="YouTube d'Anahi - Espace Kalima"
+       title="YouTube">
+
+        <i class="fa-brands fa-youtube"></i>
+
+    </a>
+
+</div>
+
+            </article>
+
+            <!-- BRIGITTE -->
+
+            <article class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03]">
+
+                <div class="relative h-[220px] xl:h-[250px] overflow-hidden">
+
+                    <img
+                        src="edition1-brigitte.jpg"
+                        alt="Brigitte lors de la première édition de Prendre sa place"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+                    <div class="absolute bottom-0 left-0 right-0 px-5 pb-3">
+                <h3 class="text-xl font-extrabold text-white">
+                Brigitte
+               </h3>
+               </div>
+
+                </div>
+
+                <div class="p-6">
+
+                    <div class="w-8 h-[2px] bg-[#9DED3A] mb-5"></div>
+
+                    <p class="speaker-quote text-white">
+                        « Le jour où j'ai compris que ma réussite
+                        et mon état intérieur étaient liés.
+                    </p>
+
+                </div>
+
+                <!-- RÉSEAUX BRIGITTE -->
+
+<div class="speaker-socials">
+
+    <!-- Site web -->
+    <a href="https://www.brigitteandre.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Site internet de Brigitte André"
+       title="Site internet">
+
+        <i class="fa-solid fa-globe"></i>
+
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/brigitte.andre.779"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Facebook de Brigitte André"
+       title="Facebook">
+
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/brigitte_andre_sl/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Instagram de Brigitte André"
+       title="Instagram">
+
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/brigitteandre/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="speaker-social-link"
+        aria-label="LinkedIn de Brigitte André"
+        title="LinkedIn">
+
+        <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/c/BrigitteAndr%C3%A9"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="YouTube de Brigitte André"
+       title="YouTube">
+
+        <i class="fa-brands fa-youtube"></i>
+    </a>
+ 
+</div>
+            </article>
+
+            <!-- MARIE -->
+
+            <article class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03]">
+
+                <div class="relative h-[220px] xl:h-[250px] overflow-hidden">
+
+                    <img
+                        src="edition1-marie.jpg"
+                        alt="Marie lors de la première édition de Prendre sa place"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+                    <div class="absolute bottom-0 left-0 right-0 px-5 pb-3">
+                        <h3 class="text-xl font-extrabold text-white">
+                            Marie
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <div class="p-6">
+
+                    <div class="w-8 h-[2px] bg-[#9DED3A] mb-5"></div>
+
+                    <p class="speaker-quote text-white">
+                        « Qui suis-je quand je ne joue plus aucun rôle...?             
+                    </p>
+
+                </div>
+
+                <!-- RÉSEAUX MARIE -->
+
+<div class="speaker-socials">
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61594998716534"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Facebook de Marie"
+       title="Facebook">
+
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/marie.yogacacao/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Instagram de Marie"
+       title="Instagram">
+
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/marie-felix-1a8b82138/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="speaker-social-link"
+        aria-label="LinkedIn de Marie Felix Yoga & Cacao"
+        title="LinkedIn">
+
+        <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+
+</div>
+
+            </article>
+
+            
+            <!-- PAOLA -->
+
+            <article class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03]">
+
+                <div class="relative h-[220px] xl:h-[250px] overflow-hidden">
+
+                    <img
+                        src="edition1-paola.jpg"
+                        alt="Paola lors de la première édition de Prendre sa place"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+                    <div class="absolute bottom-0 left-0 right-0 px-5 pb-3">
+                        <h3 class="text-xl font-extrabold text-white">
+                            Paola
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <div class="p-6">
+
+                    <div class="w-8 h-[2px] bg-[#9DED3A] mb-5"></div>
+
+                    <p class="speaker-quote text-white">
+                        « Jusqu’où faut-il aller avant de s’autoriser à s’arrêter ?
+                    </p>
+
+                </div>
+
+                <!-- RÉSEAUX PAOLA -->
+
+<div class="speaker-socials">
+
+    <!-- Site web -->
+    <a href="https://prendresaplace.be"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Site internet de Prendre sa place"
+       title="Site internet">
+
+        <i class="fa-solid fa-globe"></i>
+    </a>
+
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/prendre-sa-place"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="LinkedIn de Prendre sa place"
+       title="LinkedIn">
+
+        <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61580721741970"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Facebook de Prendre sa place"
+       title="Facebook">
+
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/prendresaplace.be/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Instagram de Prendre sa place"
+       title="Instagram">
+
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+</div>
+
+            </article>
+
+<!-- SYLVIE -->
+
+            <article class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03]">
+
+                <div class="relative h-[220px] xl:h-[250px] overflow-hidden">
+
+                    <img
+                        src="edition1-sylvie.jpg"
+                        alt="Sylvie lors de la première édition de Prendre sa place"
+                        class="w-full h-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+                    <div class="absolute bottom-0 left-0 right-0 px-5 pb-3">
+
+                        <h3 class="text-xl font-extrabold text-white">
+                            Sylvie
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <div class="p-6">
+
+                    <div class="w-8 h-[2px] bg-[#9DED3A] mb-5"></div>
+
+                    <p class="speaker-quote text-white">
+                        « Et si ma valeur ne dépendait plus du regard des autres ?
+                        </span> »
+                    </p>
+
+                </div>
+
+                <!-- RÉSEAUX SYLVIE -->
+
+<div class="speaker-socials">
+
+    <!-- Site web -->
+    <a href="https://www.sylvieplanche.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Site internet de Sylvie Planche"
+       title="Site internet">
+
+        <i class="fa-solid fa-globe"></i>
+    </a>
+
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sylvieplanchecoach"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Facebook de Sylvie Planche"
+       title="Facebook">
+
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/sylvieplanchecoach/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="Instagram de Sylvie Planche"
+       title="Instagram">
+
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/sylvie-planche-ba4754101/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="LinkedIn de Sylvie Planche"
+       title="LinkedIn">
+
+        <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@SylviePlancheCoach"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="speaker-social-link"
+       aria-label="YouTube de Sylvie Planche"
+       title="YouTube">
+
+        <i class="fa-brands fa-youtube"></i>
+    </a>
+
+</div>
+
+            </article>
+       
+
+        </div>
+
+        </div>
+
+</section>
+
+<!-- =========================================================
+     UNE SOIRÉE VÉCUE ENSEMBLE
+========================================================= -->
+
+<section class="memories-section pt-14 pb-24 md:pt-16 md:pb-32 px-6">
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+
+        <!-- TITRE -->
+
+        <div class="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+
+            <p class="text-[#9DED3A] font-bold tracking-[0.25em] uppercase text-xs mb-5">
+                Une soirée vécue ensemble
+            </p>
+
+            <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-7">
+
+                Il y avait les récits.<br>
+                Et tout ce qui s'est passé entre.
+             </h2>
+
+            <p class="text-gray-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+
+                Prendre sa place, ce n'était pas seulement écouter.
+
+                C'était aussi réfléchir, échanger, questionner
+                et parfois se reconnaître dans l'histoire de quelqu'un d'autre.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             CARROUSEL
+        ====================================================== -->
+
+        <div class="memories-carousel" id="memoriesCarousel">
+
+
+            <!-- FENÊTRE -->
+
+            <div class="carousel-viewport">
+
+                <div class="carousel-track">
+
+
+                    <!-- PHOTO 1 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-01.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+
+                    <!-- PHOTO 2 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-02.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+
+                    <!-- PHOTO 3 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-03.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+
+                    <!-- PHOTO 4 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-04.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+
+                    <!-- PHOTO 5 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-05.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+
+                    <!-- PHOTO 6 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-06.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+
+                    <!-- PHOTO 7 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-07.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+
+                    <!-- PHOTO 8 -->
+
+                    <div class="carousel-slide">
+
+                        <img
+                            src="edition1-souvenir-08.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image"
+                        >
+
+                    </div>
+
+                     <!-- PHOTO 9 -->
+                    <div class="carousel-slide">
+                        <img src="edition1-souvenir-09.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image">
+                    </div>
+
+                    <!-- PHOTO 10 -->
+                    <div class="carousel-slide">
+                        <img src="edition1-souvenir-10.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image">
+                    </div>
+
+                    <!-- PHOTO 11 -->
+                    <div class="carousel-slide">
+                        <img src="edition1-souvenir-11.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image">
+                    </div>
+
+                    <!-- PHOTO 12 -->
+                    <div class="carousel-slide">
+                        <img src="edition1-souvenir-12.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image">
+                    </div>
+
+                    <!-- PHOTO 13 -->
+                    <div class="carousel-slide">
+                        <img src="edition1-souvenir-13.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image">
+                    </div>
+
+                    <!-- PHOTO 14 -->
+                    <div class="carousel-slide">
+                        <img src="edition1-souvenir-14.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image">
+                    </div>
+
+                    <!-- PHOTO 15 -->
+                    <div class="carousel-slide">
+                        <img src="edition1-souvenir-15.jpg"
+                            alt="Souvenir de la première édition de Prendre sa place"
+                            class="carousel-image">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- FLÈCHE GAUCHE -->
+
+            <button
+                class="carousel-button carousel-prev"
+                type="button"
+                aria-label="Photo précédente"
+            >
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+
+            <!-- FLÈCHE DROITE -->
+
+            <button
+                class="carousel-button carousel-next"
+                type="button"
+                aria-label="Photo suivante"
+            >
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+
+            <!-- COMPTEUR -->
+
+<div class="carousel-counter">
+
+    <span class="carousel-current">01</span>
+
+    <span class="carousel-total">/ 15</span>
+
+</div>
+
+<div class="carousel-progress">
+
+    <div class="carousel-progress-bar"></div>
+
+</div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="border-t border-white/10 bg-black px-6 py-10">
+
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 items-center justify-between">
+
+
+        <div class="flex items-center gap-4">
+
+
+            <div class="logo-container opacity-70">
+
+                <div class="logo-circle-outer"></div>
+
+                <div class="logo-center-wrapper">
+
+                    <div class="logo-spinning-core"></div>
+
+                    <div class="logo-dot"></div>
+
+                </div>
+
+                <div class="logo-circle-outer"></div>
+
+            </div>
+
+
+            <div>
+
+                <p class="text-sm font-extrabold tracking-widest text-white">
+
+                    PRENDRE
+
+                    <span class="sa-gradient">
+                        SA
+                    </span>
+
+                    PLACE
+
+                </p>
+
+
+                <p class="text-[10px] uppercase tracking-[0.2em] text-gray-500 mt-1">
+
+                    Des paroles vraies
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="text-center md:text-right">
+
+
+            <p class="text-sm text-gray-500">
+
+                Édition #1 · Bruxelles · 24 septembre 2026
+
+            </p>
+
+
+            <a href="index.html"
+               class="inline-block text-sm text-[#9ded3a] hover:text-[#22d3ee] transition-colors mt-2">
+
+                Retour à Prendre sa place →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const carousel = document.getElementById("memoriesCarousel");
+
+    if (!carousel) return;
+
+
+    const track = carousel.querySelector(".carousel-track");
+    const slides = Array.from(
+        carousel.querySelectorAll(".carousel-slide")
+    );
+
+    const prevButton = carousel.querySelector(".carousel-prev");
+    const nextButton = carousel.querySelector(".carousel-next");
+
+    const currentCounter =
+        carousel.querySelector(".carousel-current");
+
+    const totalCounter =
+        carousel.querySelector(".carousel-total");
+
+    const progressBar =
+        carousel.querySelector(".carousel-progress-bar");
+
+
+    let currentSlide = 0;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+
+    /* =====================================================
+       FORMAT NUMÉRO
+    ====================================================== */
+
+    function formatNumber(number) {
+
+        return String(number).padStart(2, "0");
+
+    }
+
+
+    /* =====================================================
+       MISE À JOUR
+    ====================================================== */
+
+    function updateCarousel() {
+
+        /*
+        Chaque slide occupe 82 %.
+        On décale également de 9 % afin de centrer
+        la première photo.
+        */
+
+        const slideWidth =
+            window.innerWidth <= 768 ? 88 : 82;
+
+        const sideSpace =
+            (100 - slideWidth) / 2;
+
+
+        const position =
+            currentSlide * slideWidth - sideSpace;
+
+
+        track.style.transform =
+            `translateX(-${position}%)`;
+
+
+        /* Slide active */
+
+        slides.forEach((slide, index) => {
+
+            slide.classList.toggle(
+                "active",
+                index === currentSlide
+            );
+
+        });
+
+
+        /* Compteur */
+
+        currentCounter.textContent =
+            formatNumber(currentSlide + 1);
+
+        totalCounter.textContent =
+            "/ " + formatNumber(slides.length);
+
+
+        /* Barre de progression */
+
+        const progress =
+            ((currentSlide + 1) / slides.length) * 100;
+
+        progressBar.style.width =
+            progress + "%";
+
+    }
+
+
+    /* =====================================================
+       SUIVANT
+    ====================================================== */
+
+    function nextSlide() {
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+
+            currentSlide = 0;
+
+        }
+
+        updateCarousel();
+
+    }
+
+
+    /* =====================================================
+       PRÉCÉDENT
+    ====================================================== */
+
+    function previousSlide() {
+
+        currentSlide--;
+
+        if (currentSlide < 0) {
+
+            currentSlide = slides.length - 1;
+
+        }
+
+        updateCarousel();
+
+    }
+
+
+    nextButton.addEventListener(
+        "click",
+        nextSlide
+    );
+
+
+    prevButton.addEventListener(
+        "click",
+        previousSlide
+    );
+
+
+    /* =====================================================
+       SWIPE MOBILE
+    ====================================================== */
+
+    track.addEventListener(
+        "touchstart",
+        function (event) {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        { passive: true }
+    );
+
+
+    track.addEventListener(
+        "touchend",
+        function (event) {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
+
+
+            const distance =
+                touchStartX - touchEndX;
+
+
+            if (Math.abs(distance) < 50) return;
+
+
+            if (distance > 0) {
+
+                nextSlide();
+
+            } else {
+
+                previousSlide();
+
+            }
+
+        },
+        { passive: true }
+    );
+
+
+    /* =====================================================
+       CLAVIER
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "ArrowRight") {
+
+                nextSlide();
+
+            }
+
+            if (event.key === "ArrowLeft") {
+
+                previousSlide();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       REDIMENSIONNEMENT
+    ====================================================== */
+
+    window.addEventListener(
+        "resize",
+        updateCarousel
+    );
+
+
+    /* INITIALISATION */
+
+    updateCarousel();
+
+});
+</script>
+
+</body>
+
+</html>
